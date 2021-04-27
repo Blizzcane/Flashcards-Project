@@ -5,14 +5,7 @@ function Decks() {
 
     const {decks, setDecks} = useState([]);
   useEffect(() => {
-    async function loadDecks() {
-      const response = await fetch(API_BASE_URL);
-      const deck = await response.json();
-      console.log(deck);
-      setDecks(decks);
-    }
-
-    loadDecks();
+      
   }, []);
 
 
