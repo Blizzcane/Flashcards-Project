@@ -15,7 +15,7 @@ function App() {
         <Route exact={true} path="/">
           <Layout />
         </Route>
-        <Route path="/decks/:deckId">
+        <Route path="/decks">
           <Deck />
         </Route>
         <Route path="/decks/:deckId/cards/new	">
