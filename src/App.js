@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app-routes">
       <Switch>
-        <Route path="/">
+        <Route exact={true} path="/">
           <Layout />
         </Route>
         <Route path="/decks/:deckId">
