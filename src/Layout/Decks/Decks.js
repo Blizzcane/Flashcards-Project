@@ -5,15 +5,14 @@ import { listDecks } from "../../utils/api/index.js";
 function Decks() {
   const [decks, setDecks] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
     const abortController = new AbortController();
 
     async function loadDecks() {
       try {
-        
-        const response = await listDecks(abortController.signal);  
-        setDecks(response); 
-        
+        const response = await listDecks(abortController.signal);
+        setDecks(response);
+        decks.forEach((deck) => console.log(deck));
       } catch (error) {
         if (error.name !== "AbortError") {
           throw error;
@@ -21,17 +20,24 @@ function Decks() {
       }
     }
 
-    loadDecks(); 
+    loadDecks();
 
-    return () => {abortController.abort();}
-  }, []); 
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
-  console.log(decks); 
+  const list = decks.map((deck) => {
+    <div>
+      <h3>{deck.name}</h3>
+      <p>{deck.description}</p>
+    </div>;
+  });
 
   return (
     <div>
-      <h1>Hey this is the Decks</h1> 
-      <p></p>
+      <h1>Hey this is the Decks</h1>
+      <p>{list}</p>
     </div>
   );
 }
