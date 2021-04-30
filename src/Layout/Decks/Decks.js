@@ -3,14 +3,17 @@ import React from "react";
 import { listDecks } from "../../utils/api/index.js";
 
 function Decks() {
-  const [decks, setDecks] = useState({});
-  const abortController = new AbortController();
+  const [decks, setDecks] = useState([]);
+
   useEffect(() => { 
+    const abortController = new AbortController();
+
     async function loadDecks() {
       try {
-        const response = await listDecks(abortController.signal); 
-        console.log(response);
-        setDecks(response);
+        
+        const response = await listDecks(abortController.signal);  
+        setDecks(response); 
+        
       } catch (error) {
         if (error.name !== "AbortError") {
           throw error;
@@ -18,12 +21,19 @@ function Decks() {
       }
     }
 
-    loadDecks();
+    loadDecks(); 
 
-    return () => abortController.abort();
-  }, []);
+    return () => {abortController.abort();}
+  }, []); 
 
-  return <h1>Hey this is the  </h1>;
+  console.log(decks); 
+
+  return (
+    <div>
+      <h1>Hey this is the Decks</h1> 
+      <p></p>
+    </div>
+  );
 }
 
 export default Decks;
