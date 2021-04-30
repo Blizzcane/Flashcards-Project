@@ -28,10 +28,12 @@ function Decks() {
   }, []);
 
   const list = decks.map((deck) => {
-    <div>
-      <h3>{deck.name}</h3>
-      <p>{deck.description}</p>
-    </div>;
+    return (
+      <div>
+        <h3>{deck.name}</h3>
+        <p>{deck.description}</p>
+      </div>
+    );
   });
 
   return (
