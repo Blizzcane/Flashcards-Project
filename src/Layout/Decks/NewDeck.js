@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 /**
  * App is a wrapper for <Layout>, you should not need to change this file.
@@ -10,7 +11,7 @@ function NewDeck() {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li class="breadcrumb-item active">Create Deck</li>
         </ol>

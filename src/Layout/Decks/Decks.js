@@ -30,9 +30,10 @@ function Decks() {
 
   const list = decks.map((deck) => {
     return (
-      <div class="card m-2">
+      <div class="card ">
         <div class="card-body">
           <h5 class="card-title">{deck.name}</h5>
+          <p style={{textAlign: "right"}}>{deck.cards.length} cards</p>
           <p class="card-text">{deck.description}</p>
           <a href="#" class="btn btn-secondary">
             <svg
@@ -84,7 +85,7 @@ function Decks() {
 
   return (
     <div>
-      <Link to="/decks/new" class="btn btn-primary mx-2">
+      <Link to="/decks/new" class="btn btn-secondary mb-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
