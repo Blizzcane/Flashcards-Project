@@ -16,6 +16,10 @@ function Layout() {
             <Decks />
           </Route>
 
+          <Route path="/decks/new">
+            
+					</Route>
+
           <Route>
             <NotFound />
           </Route>
