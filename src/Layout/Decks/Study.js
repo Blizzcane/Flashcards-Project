@@ -36,7 +36,7 @@ function Study({currentDeck, setCurrentDeck}) {
         </ol>
       </nav>
       <h1>Study: {currentDeck["name"]}</h1>
-      <Cards deck={currentDeck}/>
+      <Cards />
     </div>
   );
 }
