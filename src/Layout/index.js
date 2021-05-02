@@ -7,6 +7,7 @@ import NewDeck from "./Decks/NewDeck";
 import Study from "./Decks/Study";
 
 function Layout() {
+  const [currentDeck, setCurrentDeck] = useState([]);
 
   return (
     <>
@@ -22,12 +23,8 @@ function Layout() {
             <NewDeck />
           </Route>
 
-          <Route
-            currentDeck={currentDeck}
-            setCurrentDeck={setCurrentDeck}
-            path="/decks/:deckId/study"
-          >
-            <Study />
+          <Route path="/decks/:deckId/study">
+            <Study currentDeck={currentDeck} setCurrentDeck={setCurrentDeck} />
           </Route>
 
           <Route>

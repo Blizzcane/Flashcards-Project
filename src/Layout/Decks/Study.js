@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { readDeck } from "../../utils/api/index";
 import { Link, useParams } from "react-router-dom";
+import Cards from "../Cards/Cards"
 
-function Study() {
+function Study({currentDeck, setCurrentDeck}) {
   const { deckId } = useParams();
   
-  const [currentDeck, setCurrentDeck] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -35,7 +35,8 @@ function Study() {
           <li class="breadcrumb-item active">Study</li>
         </ol>
       </nav>
-      <p></p>
+      <h1>Study: {currentDeck["name"]}</h1>
+      <Cards deck={currentDeck}/>
     </div>
   );
 }

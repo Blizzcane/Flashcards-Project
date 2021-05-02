@@ -32,8 +32,8 @@ function Decks() {
     return (
       <div class="card ">
         <div class="card-body">
+          <p class="card-subtitle float-right">{deck.cards.length} cards</p>
           <h5 class="card-title">{deck.name}</h5>
-          <p style={{textAlign: "right"}}>{deck.cards.length} cards</p>
           <p class="card-text">{deck.description}</p>
           <a href="#" class="btn btn-secondary">
             <svg
@@ -62,7 +62,7 @@ function Decks() {
             </svg>{" "}
             Study
           </Link>
-          <a href="#" class="btn btn-danger mx-2">
+          <a href="#" class="btn btn-danger mx-2 float-right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
