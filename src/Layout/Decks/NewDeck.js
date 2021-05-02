@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-/**
- * App is a wrapper for <Layout>, you should not need to change this file.
- */
-
 function NewDeck() {
   return (
     <div>
@@ -33,9 +29,9 @@ function NewDeck() {
           required
           name="description"
         ></textarea>
-        <a href="#" class="btn btn-secondary">
+        <Link to="/" class="btn btn-secondary">
           Cancel
-        </a>
+        </Link>
         <a href="#" class="btn btn-primary">
           Submit
         </a>
