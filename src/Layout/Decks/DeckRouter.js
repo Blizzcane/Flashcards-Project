@@ -9,18 +9,18 @@ import DeckViewer from "./DeckViewer";
 function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
   const { deckId } = useParams();
   const [cards, setCards] = useState([]);
-  useEffect(() => { 
-    async function deckSelected() { 
-      const selectedDeck = await readDeck(deckId, abortController.signal); 
+  useEffect(() => {
+    async function deckSelected() {
+      const selectedDeck = await readDeck(deckId, abortController.signal);
       setCurrentDeck(selectedDeck);
-      setCards(selectedDeck['cards']);  
+      setCards(selectedDeck["cards"]); 
     }
 
     deckSelected();
 
     return () => abortController.abort();
   }, []);
-
+ 
   return (
     <Switch>
       <Route path="/decks/:deckId/study">

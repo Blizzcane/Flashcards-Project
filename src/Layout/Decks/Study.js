@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Cards from "../Cards/Cards";
+import Cards from "../Cards/Cards"; 
 
-function Study({ currentDeck, cards }) {
+function Study({ currentDeck, cards }) { 
   const [cardNum, setCardNum] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(false); 
 
   const deckTracker = () => {
-    if(cardNum + 1 === cards.length) {
+    if (cardNum + 1 === cards.length) {
       cardNum = cards.length;
     } else {
       setCardNum(cardNum + 1);

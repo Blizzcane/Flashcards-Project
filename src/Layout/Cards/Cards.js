@@ -9,9 +9,9 @@ function Cards({cards, cardNum, setCardNum, flipped, setFlipped}) {
     <div className="card mt-2">
       <div className="card-body">
         <h4 className="card-title">
-          Card {cardNum + 1} of {cards.length}
+          Card idk
         </h4>
-        <p className="card-text">  {flipped ? cards[cardNum].back : cards[cardNum].front}
+        <p className="card-text">  not working
         </p> 
       </div>
     </div>
