@@ -1,32 +1,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { listDecks } from "../../utils/api/index.js";
 import { Link } from "react-router-dom";
 
-function Decks() {
-  const [decks, setDecks] = useState([]);
+function DeckList({decks}) {
 
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    async function loadDecks() {
-      try {
-        const response = await listDecks(abortController.signal);
-        setDecks(response);
-        decks.forEach((deck) => console.log(deck));
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          throw error;
-        }
-      }
-    }
-
-    loadDecks();
-
-    return () => {
-      abortController.abort();
-    };
-  }, []);
 
   const list = decks.map((deck) => {
     return (
@@ -35,7 +12,7 @@ function Decks() {
           <p class="card-subtitle float-right">{deck.cards.length} cards</p>
           <h5 class="card-title">{deck.name}</h5>
           <p class="card-text">{deck.description}</p>
-          <a href="#" class="btn btn-secondary">
+          <Link to={`/decks/${deck.id}`} class="btn btn-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -48,7 +25,7 @@ function Decks() {
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
             </svg>{" "}
             View
-          </a>
+          </Link>
           <Link to={`/decks/${deck.id}/study`} class="btn btn-primary mx-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,4 +80,4 @@ function Decks() {
   );
 }
 
-export default Decks;
+export default DeckList;
