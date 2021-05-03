@@ -3,8 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Components/Header";
 import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
-import NewDeck from "./Decks/NewDeck";
-import Study from "./Decks/Study";
+import NewDeck from "./Decks/NewDeck";  
 import { listDecks } from "../utils/api/index.js";
 import DeckRouter from "./Decks/DeckRouter";
 
