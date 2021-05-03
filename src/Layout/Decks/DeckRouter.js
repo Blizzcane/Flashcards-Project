@@ -13,7 +13,7 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
     async function deckSelected() { 
       const selectedDeck = await readDeck(deckId, abortController.signal); 
       setCurrentDeck(selectedDeck);
-      setCards(selectedDeck['cards']);
+      setCards(selectedDeck['cards']);  
     }
 
     deckSelected();
@@ -24,7 +24,7 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
   return (
     <Switch>
       <Route path="/decks/:deckId/study">
-        <Study currentDeck={currentDeck}  />
+        <Study currentDeck={currentDeck} cards={cards} />
       </Route>
       <Route path="/decks/:deckId">
         <DeckViewer

@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Cards from "../Cards/Cards"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Cards from "../Cards/Cards";
 
-function Study({currentDeck}) {
-  
+function Study({ currentDeck, cards }) {
+  const [cardNum, setCardNum] = useState(0);
+  const [flipped, setFlipped] = useState(false);
+
+  const deckTracker = () => {
+    if(cardNum + 1 === cards.length) {
+      cardNum = cards.length;
+    } else {
+      setCardNum(cardNum + 1);
+    }
+  };
+
   return (
     <div>
       <nav>
@@ -18,7 +28,13 @@ function Study({currentDeck}) {
         </ol>
       </nav>
       <h1>Study: {currentDeck["name"]}</h1>
-      <Cards currentDeck={currentDeck} />
+      <Cards
+        cards={cards}
+        cardNum={cardNum}
+        setCardNum={setCardNum}
+        flipped={flipped}
+        setFlipped={setFlipped}
+      />
     </div>
   );
 }
