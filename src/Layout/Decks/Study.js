@@ -14,6 +14,17 @@ function Study({ currentDeck, cards }) {
     }
   };
 
+  const flipper = () => {setFlipped(!flipped)};
+  const next = () => {
+    if (cardNum + 1 >= cards.length) {
+      setCardNum(cards.length - 1);
+      console.log(cardNum, cards.length);
+    } else {
+      setCardNum(cardNum + 1);
+    }
+    setFlipped(!flipped);
+  }
+
   return (
     <div>
       <nav>
@@ -29,11 +40,12 @@ function Study({ currentDeck, cards }) {
       </nav>
       <h1>Study: {currentDeck["name"]}</h1>
       <Cards
+        flipper={flipper}
         cards={cards}
         cardNum={cardNum}
+        next={next}
         setCardNum={setCardNum}
-        flipped={flipped}
-        setFlipped={setFlipped}
+        flipped={flipped} 
       />
     </div>
   );
