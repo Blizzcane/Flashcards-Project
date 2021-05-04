@@ -11,7 +11,7 @@ function Cards({cards, cardNum, setCardNum, flipped, setFlipped}) {
         <h4 className="card-title">
           Card idk
         </h4>
-        <p className="card-text">  not working
+        <p className="card-text">  
         </p> 
       </div>
     </div>
