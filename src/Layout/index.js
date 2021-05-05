@@ -43,7 +43,7 @@ function Layout() {
           </Route>
 
           <Route path="/decks/new">
-            <NewDeck />
+            <NewDeck abortController={abortController}/>
           </Route>
 
           <Route path="/decks/:deckId/">
