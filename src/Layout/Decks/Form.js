@@ -1,11 +1,12 @@
-import React, { useState } from "react"; 
-import { Link, useHistory, useRouteMatch } from "react-router-dom";
-import { createDeck } from "../../utils/api";
+import React, { useState } from "react";
+import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
+import { createDeck, updateDeck } from "../../utils/api";
 
 function Form({ currentDeck, abortController }) {
-  const {url} = useRouteMatch();
-  const history = useHistory(); 
-  
+  const { url } = useRouteMatch();
+  const { deckId } = useParams();
+  const history = useHistory();
+
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",
     description: currentDeck ? currentDeck.description : "",
@@ -22,10 +23,12 @@ function Form({ currentDeck, abortController }) {
     event.preventDefault();
     //check which route the user is in.
     if (url === "/decks/new") {
-      console.log("create deck");
-      createDeck(formData, abortController.signal );
+      console.log("created deck");
+      createDeck(formData, abortController.signal);
     } else {
-      console.log("edit deck");
+      console.log("edited deck");
+      formData.id = deckId;
+      updateDeck(formData, abortController.signal);
     }
     console.log("Submitted:", formData);
   };

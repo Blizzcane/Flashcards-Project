@@ -4,13 +4,15 @@ import Header from "./Components/Header";
 import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
 import NewDeck from "./Decks/NewDeck";  
-import { listDecks } from "../utils/api/index.js";
+import { deleteDeck, listDecks } from "../utils/api/index.js";
 import DeckRouter from "./Decks/DeckRouter";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
   const [currentDeck, setCurrentDeck] = useState([]);
   const abortController = new AbortController();
+
+  
 
   async function loadDecks() {
     try {
@@ -39,7 +41,7 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact={true} path="/">
-            <DeckList decks={decks} />
+            <DeckList decks={decks} abortController={abortController}  />
           </Route>
 
           <Route path="/decks/new">
