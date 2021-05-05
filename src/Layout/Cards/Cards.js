@@ -7,11 +7,11 @@ function Cards({ cards, cardNum, setCardNum, next, flipped, flipper }) {
     return card.front;
   });
   const cardBack = cards.map((card) => {
-    return  card.back;
+    return card.back;
   });
 
   return (
-    <div>
+    <div className="card">
       <div className="card-body">
         <h4 className="card-title">
           Card {cardNum + 1} of {cards.length}
@@ -19,12 +19,18 @@ function Cards({ cards, cardNum, setCardNum, next, flipped, flipper }) {
         <p className="card-text">
           {flipped ? cardBack[cardNum] : cardFront[cardNum]}
         </p>
-        <button type="button" className="btn btn-secondary mr-2" onClick={flipper}>
+        <button
+          type="button"
+          className="btn btn-secondary mr-2"
+          onClick={flipper}
+        >
           Flip
-        </button> 
-        {flipped && <button type="button" className="btn btn-secondary mr-2" onClick={next}>
-          Next
-        </button> }
+        </button>
+        {flipped && (
+          <button type="button" className="btn btn-primary mr-2" onClick={next}>
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

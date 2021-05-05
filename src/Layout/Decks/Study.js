@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Cards from "../Cards/Cards"; 
 
 function Study({ currentDeck, cards }) { 
   const [cardNum, setCardNum] = useState(0);
   const [flipped, setFlipped] = useState(false); 
+  const history = useHistory();
 
   const deckTracker = () => {
     if (cardNum + 1 === cards.length) {
@@ -17,8 +18,13 @@ function Study({ currentDeck, cards }) {
   const flipper = () => {setFlipped(!flipped)};
   const next = () => {
     if (cardNum + 1 >= cards.length) {
-      setCardNum(cards.length - 1);
-      console.log(cardNum, cards.length);
+      setCardNum(cards.length - 1); 
+      
+      if (window.confirm("Restart cards? \n \n Click 'cancel' to return to the home page")){
+        setCardNum(0);
+      } else {
+        history.push("/");
+      }
     } else {
       setCardNum(cardNum + 1);
     }
