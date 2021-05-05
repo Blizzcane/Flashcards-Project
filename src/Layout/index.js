@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import Header from "./Components/Header";
+import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
 import NewDeck from "./Decks/NewDeck";  
