@@ -7,7 +7,7 @@ import EditDeck from "./EditDeck";
 
 //Switchboard for deck routes
 
-function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
+function DeckRouter({ currentDeck, setCurrentDeck, abortController, loadDecks }) {
   const { deckId } = useParams();
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -20,7 +20,7 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
     deckSelected();
 
     return () => abortController.abort();
-  }, []);
+  }, [deckId]);
 
   return (
     <Switch>
@@ -28,7 +28,7 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController }) {
         <Study currentDeck={currentDeck} cards={cards} />
       </Route>
       <Route path="/decks/:deckId/edit">
-        <EditDeck abortController={abortController} currentDeck={currentDeck}/>
+        <EditDeck abortController={abortController} currentDeck={currentDeck} loadDecks={loadDecks}/>
       </Route>
       <Route path="/decks/:deckId">
         <DeckViewer
