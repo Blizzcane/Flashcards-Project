@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Form from "./Form";
 
-function NewDeck({abortController}) {
+function NewDeck({abortController, loadDecks}) {
   return (
     <div>
       <nav>
@@ -14,7 +14,7 @@ function NewDeck({abortController}) {
         </ol>
       </nav>
       <h2 className="my-2">Create Deck</h2>
-      <Form abortController={abortController} />
+      <Form abortController={abortController} loadDecks={loadDecks} />
     </div>
   );
 }

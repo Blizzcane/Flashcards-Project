@@ -39,7 +39,7 @@ function Study({ currentDeck, cards }) {
             <Link to="/">Home</Link>
           </li>
           <li class="breadcrumb-item">
-            <Link to="/">Add the Link later to Deck</Link>
+            <Link to={`/decks/${currentDeck.id}`}>{currentDeck.name}</Link>
           </li>
           <li class="breadcrumb-item active">Study</li>
         </ol>

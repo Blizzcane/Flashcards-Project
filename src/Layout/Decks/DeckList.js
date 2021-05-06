@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
 function DeckList({ decks, abortController }) {
-  const signal = abortController.signal;
-  const deleteButton = (deckId, signal) => {
-    if (window.confirm("Delete Deck?")) {
-      deleteDeck(deckId, signal);
-    }
-  };
   const list = decks.map((deck) => {
     return (
       <div className="card ">
@@ -43,9 +37,7 @@ function DeckList({ decks, abortController }) {
             </svg>{" "}
             Study
           </Link>
-          <button 
-            className="btn btn-danger mx-2 float-right"
-          >
+          <button className="btn btn-danger mx-2 float-right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

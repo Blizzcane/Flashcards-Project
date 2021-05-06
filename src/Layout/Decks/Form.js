@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { createDeck, updateDeck } from "../../utils/api";
 
-function Form({ currentDeck, abortController }) {
+function Form({ currentDeck, abortController, loadDecks }) {
   const { url } = useRouteMatch();
   const { deckId } = useParams();
   const history = useHistory();
@@ -30,6 +30,7 @@ function Form({ currentDeck, abortController }) {
       formData.id = deckId;
       updateDeck(formData, abortController.signal);
     }
+    loadDecks();
     console.log("Submitted:", formData);
   };
 

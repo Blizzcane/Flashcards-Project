@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
-import NewDeck from "./Decks/NewDeck";  
-import { deleteDeck, listDecks } from "../utils/api/index.js";
+import NewDeck from "./Decks/NewDeck";
+import { listDecks } from "../utils/api/index.js";
 import DeckRouter from "./Decks/DeckRouter";
 
 function Layout() {
@@ -12,7 +12,15 @@ function Layout() {
   const [currentDeck, setCurrentDeck] = useState([]);
   const abortController = new AbortController();
 
-  
+
+
+  useEffect(() => {
+    loadDecks();
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
   async function loadDecks() {
     try {
@@ -26,14 +34,6 @@ function Layout() {
     }
   }
 
-  useEffect(() => {
-    loadDecks();
-
-    return () => {
-      abortController.abort();
-    };
-  }, []);
-
   return (
     <>
       <Header />
@@ -41,15 +41,20 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact={true} path="/">
-            <DeckList decks={decks} abortController={abortController}  />
+            <DeckList decks={decks} abortController={abortController} />
           </Route>
 
           <Route path="/decks/new">
-            <NewDeck abortController={abortController}/>
+            <NewDeck abortController={abortController} loadDecks={loadDecks}/>
           </Route>
 
           <Route path="/decks/:deckId/">
-            <DeckRouter currentDeck={currentDeck} setCurrentDeck={setCurrentDeck} abortController={abortController}/>
+            <DeckRouter
+              currentDeck={currentDeck}
+              setCurrentDeck={setCurrentDeck}
+              abortController={abortController}
+              loadDecks={loadDecks}
+            />
           </Route>
 
           <Route>
