@@ -4,6 +4,7 @@ import { readDeck } from "../../utils/api/index";
 import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
+import CardEditor from "../Cards/CardEditor";
 
 //Switchboard for deck routes
 
@@ -30,12 +31,16 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController, loadDecks })
       <Route path="/decks/:deckId/edit">
         <EditDeck abortController={abortController} currentDeck={currentDeck} loadDecks={loadDecks}/>
       </Route>
+      <Route path="/decks/:deckId/cards/new">
+          <CardEditor />
+        </Route>
       <Route path="/decks/:deckId">
         <DeckViewer
           currentDeck={currentDeck}
           cards={cards}
           abortController={abortController}
         />
+        
       </Route>
     </Switch>
   );
