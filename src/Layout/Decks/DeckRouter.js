@@ -5,14 +5,17 @@ import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
 import CardEditor from "../Cards/CardEditor";
+import DeckList from "./DeckList";
 
 //Switchboard for deck routes
 
 function DeckRouter({
   currentDeck,
   setCurrentDeck,
-  abortController, 
-  addNewDeck
+  abortController,
+  addNewDeck,
+  decks,
+  deleteThisDeck
 }) {
   const { deckId } = useParams();
   const [cards, setCards] = useState([]);
@@ -30,6 +33,8 @@ function DeckRouter({
 
   return (
     <Switch>
+      <Route> 
+      </Route>
       <Route path="/decks/:deckId/study">
         <Study currentDeck={currentDeck} cards={cards} />
       </Route>
