@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { createDeck, updateDeck } from "../../utils/api";
 
-function Form({ currentDeck, addNewDeck }) {
+function Form({ currentDeck, addNewDeck, history }) {
   const { url } = useRouteMatch();
-  const { deckId } = useParams();
-  const history = useHistory();
+  const { deckId } = useParams(); 
 
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",
@@ -23,8 +22,7 @@ function Form({ currentDeck, addNewDeck }) {
     event.preventDefault();
     //check which route the user is in.
     const newDeckId =  await addNewDeck(formData);
-      
-    console.log("Submitted:", formData);
+    history.push(`/decks/${newDeckId}`);
   }
 
   return (

@@ -14,18 +14,19 @@ function Layout() {
   const signal = abortController.signal;
   const history = useHistory();
 
-  useEffect(() => {
+  useEffect(() => { 
     loadDecks();
-
     return () => {
       abortController.abort();
     };
   }, []);
 
   async function loadDecks() {
-    try {
+    try { 
       const response = await listDecks(signal);
-      setDecks(response);
+      console.log(response);
+      setDecks(response); 
+      console.log(decks);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
@@ -62,11 +63,12 @@ function Layout() {
               decks={decks}
               abortController={abortController}
               deleteThisDeck={deleteThisDeck} 
+              addNewDeck={addNewDeck}
             />
           </Route>
 
           <Route path="/decks/new">
-            <NewDeck abortController={abortController} loadDecks={loadDecks} />
+            <NewDeck addNewDeck={addNewDeck} abortController={abortController} loadDecks={loadDecks} history={history}/>
           </Route>
 
           <Route path="/decks/:deckId/">

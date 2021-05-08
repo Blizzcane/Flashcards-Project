@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { deleteDeck } from "../../utils/api";
+import { Link } from "react-router-dom"; 
 
-function DeckList({ decks, abortController, deleteThisDeck  }) {
+function DeckList({ decks, deleteThisDeck  }) {
   const list = decks.map((deck) => {
     return (
       <div className="card ">
