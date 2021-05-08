@@ -8,7 +8,12 @@ import CardEditor from "../Cards/CardEditor";
 
 //Switchboard for deck routes
 
-function DeckRouter({ currentDeck, setCurrentDeck, abortController, loadDecks }) {
+function DeckRouter({
+  currentDeck,
+  setCurrentDeck,
+  abortController, 
+  addNewDeck
+}) {
   const { deckId } = useParams();
   const [cards, setCards] = useState([]);
   useEffect(() => {
@@ -29,18 +34,26 @@ function DeckRouter({ currentDeck, setCurrentDeck, abortController, loadDecks })
         <Study currentDeck={currentDeck} cards={cards} />
       </Route>
       <Route path="/decks/:deckId/edit">
-        <EditDeck abortController={abortController} currentDeck={currentDeck} loadDecks={loadDecks}/>
+        <EditDeck
+          abortController={abortController}
+          currentDeck={currentDeck}
+          cards={cards}
+          addNewDeck={addNewDeck}
+        />
       </Route>
-      <Route path="/decks/:deckId/cards/new">
-          <CardEditor />
-        </Route>
+      <Route path="/decks/:deckId/cards">
+        <CardEditor
+          currentDeck={currentDeck}
+          cards={cards}
+          abortController={abortController}
+        />
+      </Route>
       <Route path="/decks/:deckId">
         <DeckViewer
           currentDeck={currentDeck}
           cards={cards}
           abortController={abortController}
         />
-        
       </Route>
     </Switch>
   );
