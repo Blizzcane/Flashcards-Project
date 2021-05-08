@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
-function DeckList({ decks, abortController }) {
+function DeckList({ decks, abortController, deleteThisDeck  }) {
   const list = decks.map((deck) => {
     return (
       <div className="card ">
@@ -37,7 +37,10 @@ function DeckList({ decks, abortController }) {
             </svg>{" "}
             Study
           </Link>
-          <button className="btn btn-danger mx-2 float-right">
+          <button
+            className="btn btn-danger mx-2 float-right"
+            onClick={() => deleteThisDeck(deck.id)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

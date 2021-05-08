@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { createDeck, updateDeck } from "../../utils/api";
 
-function Form({ currentDeck, abortController, loadDecks }) {
+function Form({ currentDeck, addNewDeck }) {
   const { url } = useRouteMatch();
   const { deckId } = useParams();
   const history = useHistory();
@@ -19,20 +19,13 @@ function Form({ currentDeck, abortController, loadDecks }) {
     });
   };
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
     //check which route the user is in.
-    if (url === "/decks/new") {
-      console.log("created deck");
-      createDeck(formData, abortController.signal);
-    } else {
-      console.log("edited deck");
-      formData.id = deckId;
-      updateDeck(formData, abortController.signal);
-    }
-    loadDecks();
+    const newDeckId =  await addNewDeck(formData);
+      
     console.log("Submitted:", formData);
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>

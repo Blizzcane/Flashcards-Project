@@ -11,29 +11,9 @@
       "id": 2
     },
     {
-      "name": "Test",
-      "description": "Testing",
-      "id": 3
-    },
-    {
-      "name": "a",
-      "description": "s",
-      "id": 4
-    },
-    {
       "name": "testing",
       "description": "testing",
       "id": 5
-    },
-    {
-      "name": "why is this working now?",
-      "description": "I have no clue",
-      "id": 6
-    },
-    {
-      "name": "nvm its not working",
-      "description": "yea no shit",
-      "id": 7
     }
   ],
   "cards": [

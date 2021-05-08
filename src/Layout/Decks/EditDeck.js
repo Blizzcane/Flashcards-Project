@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import Form from "./Form";
 
-function EditDeck({currentDeck, abortController, loadDecks}) {
+function EditDeck({currentDeck, abortController, loadDecks, addNewDeck}) {
     const history = useHistory();
   return (
     <div>
@@ -17,7 +17,7 @@ function EditDeck({currentDeck, abortController, loadDecks}) {
           <li className="breadcrumb-item active">Edit Deck</li>
         </ol>
       </nav>
-      <Form abortController={abortController} currentDeck={currentDeck} loadDecks={loadDecks}/>
+      <Form abortController={abortController} currentDeck={currentDeck} loadDecks={loadDecks} addNewDeck={addNewDeck}/>
     </div>
   );
 }

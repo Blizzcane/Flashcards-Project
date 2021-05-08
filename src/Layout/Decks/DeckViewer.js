@@ -30,7 +30,7 @@ function DeckViewer({ currentDeck, cards }) {
               />
             </svg>
           </a>
-          <Link to={`${url}/edit`} className="btn btn-secondary mr-2 float-right">
+          <Link to={`${url}/cards/${card.id}/edit`} className="btn btn-secondary mr-2 float-right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
