@@ -4,17 +4,23 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
 import NewDeck from "./Decks/NewDeck";
-import { createDeck, deleteDeck, listDecks } from "../utils/api/index.js";
+import {
+  createDeck,
+  deleteDeck,
+  listDecks,
+  readDeck,
+} from "../utils/api/index.js";
 import DeckRouter from "./Decks/DeckRouter";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
   const [currentDeck, setCurrentDeck] = useState([]);
+  const [cards, setCards] = useState([]);
   const abortController = new AbortController();
   const signal = abortController.signal;
   const history = useHistory();
 
-  useEffect(() => { 
+  useEffect(() => {
     loadDecks();
     return () => {
       abortController.abort();
@@ -22,10 +28,10 @@ function Layout() {
   }, []);
 
   async function loadDecks() {
-    try { 
+    try {
       const response = await listDecks(signal);
       console.log(response);
-      setDecks(response); 
+      setDecks(response);
       console.log(decks);
     } catch (error) {
       if (error.name !== "AbortError") {
@@ -52,6 +58,20 @@ function Layout() {
     }
   }
 
+  async function loadCurrentDeck(id) {
+    try {
+      console.log("loadCurrentDeck");
+      const deck = await readDeck(id, signal);
+      console.log(deck);
+      setCurrentDeck(deck);
+      console.log(currentDeck);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
+  }
+
   return (
     <>
       <Header />
@@ -62,22 +82,32 @@ function Layout() {
             <DeckList
               decks={decks}
               abortController={abortController}
-              deleteThisDeck={deleteThisDeck} 
+              deleteThisDeck={deleteThisDeck}
               addNewDeck={addNewDeck}
+              loadCurrentDeck={loadCurrentDeck}
             />
           </Route>
 
           <Route path="/decks/new">
-            <NewDeck addNewDeck={addNewDeck} abortController={abortController} loadDecks={loadDecks} history={history}/>
+            <NewDeck
+              addNewDeck={addNewDeck}
+              loadCurrentDeck={loadCurrentDeck}
+              abortController={abortController}
+              loadDecks={loadDecks}
+              history={history}
+            />
           </Route>
 
           <Route path="/decks/:deckId/">
             <DeckRouter
+              loadCurrentDeck={loadCurrentDeck}
               currentDeck={currentDeck}
               setCurrentDeck={setCurrentDeck}
               abortController={abortController}
               loadDecks={loadDecks}
+              cards={cards}
               addNewDeck={addNewDeck}
+              loadCurrentDeck={loadCurrentDeck}
             />
           </Route>
 

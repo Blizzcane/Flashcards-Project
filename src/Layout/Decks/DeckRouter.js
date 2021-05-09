@@ -4,8 +4,7 @@ import { readDeck } from "../../utils/api/index";
 import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
-import CardEditor from "../Cards/CardEditor";
-import DeckList from "./DeckList";
+import CardEditor from "../Cards/CardEditor"; 
 
 //Switchboard for deck routes
 
@@ -15,21 +14,20 @@ function DeckRouter({
   abortController,
   addNewDeck,
   decks,
+  cards,
+  loadCurrentDeck,
   deleteThisDeck
 }) {
   const { deckId } = useParams();
-  const [cards, setCards] = useState([]);
   useEffect(() => {
-    async function deckSelected() {
-      const selectedDeck = await readDeck(deckId, abortController.signal);
-      setCurrentDeck(selectedDeck);
-      setCards(selectedDeck["cards"]);
-    }
+    console.log("useEffect");
+    loadCurrentDeck(deckId);
 
-    deckSelected();
-
-    return () => abortController.abort();
-  }, [deckId]);
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+  
 
   return (
     <Switch>
@@ -56,6 +54,7 @@ function DeckRouter({
       <Route path="/decks/:deckId">
         <DeckViewer
           currentDeck={currentDeck}
+          setCurrentDeck={setCurrentDeck}
           cards={cards}
           abortController={abortController}
         />
