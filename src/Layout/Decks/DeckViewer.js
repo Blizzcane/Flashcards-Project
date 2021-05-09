@@ -1,11 +1,14 @@
-import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams, useRouteMatch } from "react-router-dom"; 
 
 //view individual decks
 
-function DeckViewer({ currentDeck, cards }) {
+function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortController, cards }) {
   const { url } = useRouteMatch();
-  const deck = currentDeck;
+  const {deckId} = useParams(); 
+ 
+   
+
   const cardsJSX = cards.map((card) => {
     return (
       <div className="card mt-2">
@@ -55,11 +58,11 @@ function DeckViewer({ currentDeck, cards }) {
           <li class="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li class="breadcrumb-item active">{deck.name}</li>
+          <li class="breadcrumb-item active">{currentDeck.name}</li>
         </ol>
       </nav>
-      <h4>{deck.name}</h4>
-      <p>{deck.description}</p>
+      <h4>{currentDeck.name}</h4>
+      <p>{currentDeck.description}</p>
       <div className="mb-3">
         <Link to={`${url}/edit`} className="btn btn-secondary mr-2">
           <svg
@@ -74,7 +77,7 @@ function DeckViewer({ currentDeck, cards }) {
           </svg>{" "}
           Edit
         </Link>
-        <Link to={`/decks/${deck.id}/study`} class="btn btn-primary mr-2">
+        <Link to={`/decks/${currentDeck.id}/study`} class="btn btn-primary mr-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -87,7 +90,7 @@ function DeckViewer({ currentDeck, cards }) {
           </svg>{" "}
           Study
         </Link>
-        <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">
+        <Link to={`/decks/${currentDeck.id}/cards/new`} className="btn btn-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
