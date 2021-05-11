@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Form from "./Form";
 
-function NewDeck({abortController, loadDecks, addNewDeck, history}) {
+function NewDeck({abortController, loadDecks, addNewDeck, history, currentDeck, cards}) {
   return (
     <div>
       <nav>

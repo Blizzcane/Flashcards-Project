@@ -7,13 +7,7 @@ function Study({ currentDeck, cards }) {
   const [flipped, setFlipped] = useState(false); 
   const history = useHistory();
 
-  const deckTracker = () => {
-    if (cardNum + 1 === cards.length) {
-      cardNum = cards.length;
-    } else {
-      setCardNum(cardNum + 1);
-    }
-  };
+  
 
   const flipper = () => {setFlipped(!flipped)};
   const next = () => {

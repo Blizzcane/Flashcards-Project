@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom"; 
+import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 //view individual decks
 
-function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortController, cards }) {
+function DeckViewer({ currentDeck, cards }) {
   const { url } = useRouteMatch();
-  const {deckId} = useParams(); 
- 
-   
 
   const cardsJSX = cards.map((card) => {
     return (
@@ -17,7 +14,7 @@ function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortControl
             <div className="col">{card.front}</div>
             <div className="col">{card.back}</div>
           </div>
-          <a href="#" class="btn btn-danger float-right">
+          <a href="/" class="btn btn-danger float-right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -33,7 +30,10 @@ function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortControl
               />
             </svg>
           </a>
-          <Link to={`${url}/cards/${card.id}/edit`} className="btn btn-secondary mr-2 float-right">
+          <Link
+            to={`${url}/cards/${card.id}/edit`}
+            className="btn btn-secondary mr-2 float-right"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -77,7 +77,10 @@ function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortControl
           </svg>{" "}
           Edit
         </Link>
-        <Link to={`/decks/${currentDeck.id}/study`} class="btn btn-primary mr-2">
+        <Link
+          to={`/decks/${currentDeck.id}/study`}
+          class="btn btn-primary mr-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -90,7 +93,10 @@ function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortControl
           </svg>{" "}
           Study
         </Link>
-        <Link to={`/decks/${currentDeck.id}/cards/new`} className="btn btn-primary">
+        <Link
+          to={`/decks/${currentDeck.id}/cards/new`}
+          className="btn btn-primary"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -103,7 +109,7 @@ function DeckViewer({ loadCurrentDeck, currentDeck, setCurrentDeck, abortControl
           </svg>{" "}
           Add Cards
         </Link>
-        <a href="#" class="btn btn-danger mx-2 float-right">
+        <a href="/" class="btn btn-danger mx-2 float-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

@@ -9,7 +9,7 @@ import {
   deleteDeck,
   listDecks,
   readDeck,
-} from "../utils/api/index.js";
+} from "../utils/api/index";
 import DeckRouter from "./Decks/DeckRouter";
 
 function Layout() {
@@ -30,9 +30,9 @@ function Layout() {
   async function loadDecks() {
     try {
       const response = await listDecks(signal);
-      console.log(response);
+      console.log("response:", response);
       setDecks(response);
-      console.log(decks);
+      console.log("decks:", decks);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
@@ -42,19 +42,33 @@ function Layout() {
 
   //add a new deck to the database and return it's id.
   async function addNewDeck(deck) {
-    const newDeck = await createDeck(deck, signal);
-    loadDecks();
-    return newDeck.id;
+    try {
+      const newDeck = await createDeck(deck, signal);
+      loadDecks();
+      return newDeck.id;
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
   }
 
   //deletes deck by id and returns home
   async function deleteThisDeck(id) {
-    if (
-      window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
-    ) {
-      await deleteDeck(id, signal);
-      loadDecks();
-      history.push("/");
+    try {
+      if (
+        window.confirm(
+          "Delete this deck?\n\nYou will not be able to recover it."
+        )
+      ) {
+        await deleteDeck(id, signal);
+        loadDecks();
+        history.push("/");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
     }
   }
 
@@ -95,6 +109,8 @@ function Layout() {
               abortController={abortController}
               loadDecks={loadDecks}
               history={history}
+              cards={cards}
+              currentDeck={currentDeck}
             />
           </Route>
 
@@ -106,8 +122,8 @@ function Layout() {
               abortController={abortController}
               loadDecks={loadDecks}
               cards={cards}
-              addNewDeck={addNewDeck}
-              loadCurrentDeck={loadCurrentDeck}
+              setCards={setCards}
+              addNewDeck={addNewDeck} 
             />
           </Route>
 

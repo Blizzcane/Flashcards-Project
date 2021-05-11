@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, useParams } from "react-router";
 import { readDeck } from "../../utils/api/index";
 import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
-import CardEditor from "../Cards/CardEditor"; 
+import CardEditor from "../Cards/CardEditor";
 
 //Switchboard for deck routes
 
@@ -13,26 +13,35 @@ function DeckRouter({
   setCurrentDeck,
   abortController,
   addNewDeck,
-  decks,
+  setCards,
   cards,
-  loadCurrentDeck,
-  deleteThisDeck
 }) {
   const { deckId } = useParams();
   useEffect(() => {
     console.log("useEffect");
-    loadCurrentDeck(deckId);
-
+    getDeck(deckId);
     return () => {
       abortController.abort();
     };
-  }, []);
-  
+  }, [deckId]);
+
+  async function getDeck(id) {
+    try {
+      const deck = await readDeck(id, abortController.signal);
+      console.log("deck:", deck);
+      setCurrentDeck(deck);
+      console.log("Current Deck:", currentDeck);
+      setCards(currentDeck.cards);
+      console.log("Cards:", cards);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
+  }
 
   return (
     <Switch>
-      <Route> 
-      </Route>
       <Route path="/decks/:deckId/study">
         <Study currentDeck={currentDeck} cards={cards} />
       </Route>

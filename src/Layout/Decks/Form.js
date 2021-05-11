@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Link, useHistory, useParams, useRouteMatch } from "react-router-dom";
-import { createDeck, updateDeck } from "../../utils/api";
+import { Link } from "react-router-dom";
 
-function Form({ currentDeck, addNewDeck, history }) {
-  const { url } = useRouteMatch();
-  const { deckId } = useParams(); 
+function Form({ currentDeck, addNewDeck, history,cards }) {
 
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",

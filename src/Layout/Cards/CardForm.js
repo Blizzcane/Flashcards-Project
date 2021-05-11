@@ -1,10 +1,10 @@
 import React, { useState } from "react"; 
-import { useHistory, useParams, useRouteMatch } from "react-router";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 function CardForm({ currentDeck, abortController }) {
-  const { url } = useRouteMatch();
-  const { deckId } = useParams();
+  // const { url } = useRouteMatch();
+  // const { deckId } = useParams();
   const history = useHistory();
 
   const initialFormState = {
