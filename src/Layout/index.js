@@ -21,7 +21,15 @@ function Layout() {
   const history = useHistory();
 
   useEffect(() => {
-    loadDecks();
+    const test = async () => {
+      const response = await listDecks(signal);
+      console.log("response:", response);
+      setDecks(response);
+      console.log("decks:", decks); 
+    }
+    
+    test();
+    
     return () => {
       abortController.abort();
     };
@@ -32,7 +40,7 @@ function Layout() {
       const response = await listDecks(signal);
       console.log("response:", response);
       setDecks(response);
-      console.log("decks:", decks);
+      console.log("decks:", decks); 
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
