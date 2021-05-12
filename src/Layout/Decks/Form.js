@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useRouteMatch } from "react-router-dom";
 
-function Form({ currentDeck, addNewDeck, history,cards }) {
-
+function Form({ currentDeck, addNewDeck, history, cards }) {
+  const { url } = useRouteMatch();
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",
     description: currentDeck ? currentDeck.description : "",
@@ -18,8 +18,10 @@ function Form({ currentDeck, addNewDeck, history,cards }) {
   async function handleSubmit(event) {
     event.preventDefault();
     //check which route the user is in.
-    const newDeckId =  await addNewDeck(formData);
-    history.push(`/decks/${newDeckId}`);
+    if (url === "/decks/new") {
+      const newDeckId = await addNewDeck(formData);
+      history.push(`/decks/${newDeckId}`);
+    }
   }
 
   return (

@@ -19,16 +19,7 @@ function DeckRouter({
   const { deckId } = useParams();
   useEffect(() => {
     console.log("useEffect");
-    const test = async (id) => {
-      const deck = await readDeck(id, abortController.signal);
-      console.log("deck:", deck);
-      setCurrentDeck(deck);
-      console.log("Current Deck:", currentDeck);
-      setCards(currentDeck.cards);
-      console.log("Cards:", cards);
-    }
-
-    test(deckId);
+    getDeck(deckId);
 
     return () => {
       abortController.abort();
@@ -38,11 +29,8 @@ function DeckRouter({
   async function getDeck(id) {
     try {
       const deck = await readDeck(id, abortController.signal);
-      console.log("deck:", deck);
       setCurrentDeck(deck);
-      console.log("Current Deck:", currentDeck);
-      setCards(currentDeck.cards);
-      console.log("Cards:", cards);
+      setCards(deck.cards);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
