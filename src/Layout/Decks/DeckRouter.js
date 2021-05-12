@@ -19,7 +19,17 @@ function DeckRouter({
   const { deckId } = useParams();
   useEffect(() => {
     console.log("useEffect");
-    getDeck(deckId);
+    const test = async (id) => {
+      const deck = await readDeck(id, abortController.signal);
+      console.log("deck:", deck);
+      setCurrentDeck(deck);
+      console.log("Current Deck:", currentDeck);
+      setCards(currentDeck.cards);
+      console.log("Cards:", cards);
+    }
+
+    test(deckId);
+
     return () => {
       abortController.abort();
     };
