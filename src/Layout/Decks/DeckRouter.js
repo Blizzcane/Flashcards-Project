@@ -12,10 +12,13 @@ function DeckRouter({
   currentDeck,
   setCurrentDeck,
   abortController,
-  addNewDeck,
-  setCards,
+  addNewDeck, 
   cards,
-  history
+  loadDecks,
+  history,
+  deleteThisCard,
+  deleteThisDeck,
+  getDeck
 }) {
   const { deckId } = useParams();
   useEffect(() => {
@@ -27,17 +30,7 @@ function DeckRouter({
     };
   }, [deckId]);
 
-  async function getDeck(id) {
-    try {
-      const deck = await readDeck(id, abortController.signal);
-      setCurrentDeck(deck);
-      setCards(deck.cards);
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        throw error;
-      }
-    }
-  }
+ 
 
   return (
     <Switch>
@@ -62,8 +55,11 @@ function DeckRouter({
       <Route path="/decks/:deckId">
         <DeckViewer
           currentDeck={currentDeck}
+          deleteThisCard={deleteThisCard}
           setCurrentDeck={setCurrentDeck}
+          deleteThisDeck={deleteThisDeck}
           cards={cards}
+          loadDecks={loadDecks}
           abortController={abortController}
         />
       </Route>

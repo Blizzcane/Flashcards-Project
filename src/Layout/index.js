@@ -6,6 +6,7 @@ import DeckList from "./Decks/DeckList";
 import NewDeck from "./Decks/NewDeck";
 import {
   createDeck,
+  deleteCard,
   deleteDeck,
   listDecks,
   readDeck,
@@ -21,14 +22,7 @@ function Layout() {
   const history = useHistory();
 
   useEffect(() => {
-    const test = async () => {
-      const response = await listDecks(signal);
-      console.log("response:", response);
-      setDecks(response);
-      console.log("decks:", decks); 
-    }
-    
-    test();
+    loadDecks();
     
     return () => {
       abortController.abort();
@@ -80,13 +74,29 @@ function Layout() {
     }
   }
 
-  async function loadCurrentDeck(id) {
+  //deletes card by id
+  async function deleteThisCard(id) {
+    try {
+      if (
+        window.confirm(
+          "Delete this card?\n\nYou will not be able to recover it."
+        )
+      ) {
+        await deleteCard(id, signal);  
+        loadDecks();
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
+  }
+  async function getDeck(id) {
     try {
       console.log("loadCurrentDeck");
       const deck = await readDeck(id, signal);
-      console.log(deck);
       setCurrentDeck(deck);
-      console.log(currentDeck);
+      setCards(deck.cards);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
@@ -105,15 +115,13 @@ function Layout() {
               decks={decks}
               abortController={abortController}
               deleteThisDeck={deleteThisDeck}
-              addNewDeck={addNewDeck}
-              loadCurrentDeck={loadCurrentDeck}
+              addNewDeck={addNewDeck} 
             />
           </Route>
 
           <Route path="/decks/new">
             <NewDeck
-              addNewDeck={addNewDeck}
-              loadCurrentDeck={loadCurrentDeck}
+              addNewDeck={addNewDeck} 
               abortController={abortController}
               loadDecks={loadDecks}
               history={history}
@@ -123,16 +131,18 @@ function Layout() {
           </Route>
 
           <Route path="/decks/:deckId/">
-            <DeckRouter
-              loadCurrentDeck={loadCurrentDeck}
+            <DeckRouter 
               currentDeck={currentDeck}
               setCurrentDeck={setCurrentDeck}
+              deleteThisDeck={deleteThisDeck}
               abortController={abortController}
               loadDecks={loadDecks}
               cards={cards}
+              getDeck={getDeck}
               setCards={setCards}
               history={history}
               addNewDeck={addNewDeck} 
+              deleteThisCard={deleteThisCard}
             />
           </Route>
 
