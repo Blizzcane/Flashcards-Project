@@ -1,15 +1,15 @@
-import React, { useState } from "react"; 
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useParams, useRouteMatch } from "react-router-dom";
 
-function CardForm({ currentDeck, abortController }) {
-  // const { url } = useRouteMatch();
-  // const { deckId } = useParams();
-  const history = useHistory();
+function CardForm({ currentDeck, cards }) {
+  const { url } = useRouteMatch();
+  const { cardId } = useParams();
+  console.log(cardId, url);
+  console.log(cards.cardId);
 
   const initialFormState = {
-    front: currentDeck ? currentDeck.front : "",
-    back: currentDeck ? currentDeck.back : "",
+    front: cardId ? cards[cardId].front : "",
+    back: cardId ? cards[cardId].back : "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
   const handleChange = ({ target }) => {
@@ -19,23 +19,14 @@ function CardForm({ currentDeck, abortController }) {
     });
   };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   //check which route the user is in.
-  //   if (url === "/decks/new") {
-  //     console.log("created deck");
-  //     createDeck(formData, abortController.signal);
-  //   } else {
-  //     console.log("edited deck");
-  //     formData.id = deckId;
-  //     updateDeck(formData, abortController.signal);
-  //   }
-  //   loadDecks();
-  //   console.log("Submitted:", formData);
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //check which route the user is in.
+    console.log("Submitted:", formData);
+  };
 
   return (
-    <form >
+    <form onSubmit={handleSubmit}>
       <label for="front">Front</label>
       <textarea
         id="front"
@@ -56,11 +47,7 @@ function CardForm({ currentDeck, abortController }) {
         name="back"
         style={{ width: "100%", marginBottom: "15px" }}
       ></textarea>
-      <Link
-        to="#"
-        onClick={() => history.goBack()}
-        class="btn btn-secondary mr-2 mb-4"
-      >
+      <Link to="#" class="btn btn-secondary mr-2 mb-4">
         Done
       </Link>
       <button type="submit" class="btn btn-primary  mb-4">

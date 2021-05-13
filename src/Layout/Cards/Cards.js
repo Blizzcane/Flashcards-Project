@@ -2,7 +2,7 @@ import React from "react";
 
 //this will return the current card side.
 
-function Cards({ cards, cardNum, setCardNum, next, flipped, flipper }) {
+function Cards({ cards, cardNum, next, flipped, flipper }) {
   const cardFront = cards.map((card) => {
     return card.front;
   });
