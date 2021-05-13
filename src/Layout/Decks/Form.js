@@ -21,8 +21,10 @@ function Form({ currentDeck, addNewDeck, history, cards }) {
     if (url === "/decks/new") {
       const newDeckId = await addNewDeck(formData);
       history.push(`/decks/${newDeckId}`);
-    }
-  }
+    } else {
+      
+    };
+  };
 
   return (
     <form onSubmit={handleSubmit}>

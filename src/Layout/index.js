@@ -131,6 +131,7 @@ function Layout() {
               loadDecks={loadDecks}
               cards={cards}
               setCards={setCards}
+              history={history}
               addNewDeck={addNewDeck} 
             />
           </Route>
