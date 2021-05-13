@@ -3,7 +3,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 //view individual decks
 
-function DeckViewer({ currentDeck, cards, deleteThisDeck,deleteThisCard }) {
+function DeckViewer({ currentDeck, cards, addcard, deleteThisDeck,deleteThisCard }) {
   const { url } = useRouteMatch();
 
   const cardsJSX = cards.map((card) => {

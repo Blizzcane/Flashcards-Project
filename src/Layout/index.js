@@ -5,6 +5,7 @@ import NotFound from "./NotFound";
 import DeckList from "./Decks/DeckList";
 import NewDeck from "./Decks/NewDeck";
 import {
+  createCard,
   createDeck,
   deleteCard,
   deleteDeck,
@@ -115,6 +116,15 @@ function Layout() {
       }
     }
   }
+  async function addCard(deckId, card) {
+    try {
+      createCard(deckId, card, signal);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
+  } 
 
   return (
     <>
@@ -128,6 +138,7 @@ function Layout() {
               abortController={abortController}
               deleteThisDeck={deleteThisDeck}
               addNewDeck={addNewDeck} 
+              addCard={addCard}
               updateThisDeck={updateThisDeck}
               history={history}
             />
@@ -138,6 +149,7 @@ function Layout() {
               addNewDeck={addNewDeck} 
               abortController={abortController}
               loadDecks={loadDecks}
+              addCard={addCard}
               history={history}
               cards={cards}
               currentDeck={currentDeck}
@@ -150,6 +162,7 @@ function Layout() {
               setCurrentDeck={setCurrentDeck}
               deleteThisDeck={deleteThisDeck}
               updateThisDeck={updateThisDeck}
+              addCard={addCard}
               abortController={abortController}
               loadDecks={loadDecks}
               cards={cards}
