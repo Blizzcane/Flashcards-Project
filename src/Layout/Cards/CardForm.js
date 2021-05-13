@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useParams, useRouteMatch } from "react-router-dom"; 
 
-function CardForm({ currentDeck, cards }) {
+function CardForm({ currentDeck, cards, addCard }) { 
   const { url } = useRouteMatch();
-  const { cardId } = useParams();
-  console.log(cardId, url);
-  console.log(cards.cardId);
+  const mode = (url === `/decks/${currentDeck.id}/cards/new`) ? "new" : "edit";
+  const { cardId } = useParams();  
 
   const initialFormState = {
     front: cardId ? cards[cardId].front : "",
@@ -23,6 +22,12 @@ function CardForm({ currentDeck, cards }) {
     event.preventDefault();
     //check which route the user is in.
     console.log("Submitted:", formData);
+      if (mode === "new") { 
+        addCard(currentDeck.id, formData);
+      } else { 
+
+      }
+
   };
 
   return (
@@ -47,7 +52,7 @@ function CardForm({ currentDeck, cards }) {
         name="back"
         style={{ width: "100%", marginBottom: "15px" }}
       ></textarea>
-      <Link to="#" class="btn btn-secondary mr-2 mb-4">
+      <Link to={`/decks/${currentDeck.id}`} class="btn btn-secondary mr-2 mb-4">
         Done
       </Link>
       <button type="submit" class="btn btn-primary  mb-4">

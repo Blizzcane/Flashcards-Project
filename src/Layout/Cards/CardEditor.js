@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import CardForm from "./CardForm";
 
-function CardEditor({ currentDeck, cards, abortController }) {
+function CardEditor({ currentDeck, addCard, cards, abortController }) {
   return (
     <div>
       <nav>
@@ -12,11 +12,24 @@ function CardEditor({ currentDeck, cards, abortController }) {
           </li>
         </ol>
       </nav>
-      <CardForm
-        cards={cards}
-        currentDeck={currentDeck}
-        abortController={abortController}
-      />
+      <Switch>
+        <Route path="/decks/:deckId/cards/:cardId/edit">
+          <CardForm
+            cards={cards}
+            addCard={addCard}
+            currentDeck={currentDeck}
+            abortController={abortController}
+          />
+        </Route>
+        <Route path="/decks/:deckId/cards/new">
+          <CardForm
+            addCard={addCard}
+            cards={cards}
+            currentDeck={currentDeck}
+            abortController={abortController}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 }
