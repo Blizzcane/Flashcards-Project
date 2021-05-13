@@ -2,8 +2,15 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import Form from "./Form";
 
-function EditDeck({ currentDeck, abortController, loadDecks, addNewDeck ,cards }) {
-  const history = useHistory();
+function EditDeck({
+  currentDeck,
+  abortController,
+  loadDecks,
+  addNewDeck,
+  cards,
+  history,
+  updateThisDeck
+}) {
   return (
     <div>
       <nav>
@@ -22,6 +29,8 @@ function EditDeck({ currentDeck, abortController, loadDecks, addNewDeck ,cards }
         currentDeck={currentDeck}
         loadDecks={loadDecks}
         cards={cards}
+        updateThisDeck={updateThisDeck}
+        history={history}
         addNewDeck={addNewDeck}
       />
     </div>

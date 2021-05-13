@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
-function Form({ currentDeck, addNewDeck, history, cards }) {
+function Form({ currentDeck, addNewDeck, history, updateThisDeck, loadDecks }) {
   const { url } = useRouteMatch();
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",
@@ -22,9 +22,12 @@ function Form({ currentDeck, addNewDeck, history, cards }) {
       const newDeckId = await addNewDeck(formData);
       history.push(`/decks/${newDeckId}`);
     } else {
-      
-    };
-  };
+      formData.id = currentDeck.id; 
+      updateThisDeck(formData);
+      loadDecks();
+      history.push(`/decks/${currentDeck.id}`)
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,7 +54,11 @@ function Form({ currentDeck, addNewDeck, history, cards }) {
       ></textarea>
       <Link
         to="#"
-        onClick={() => history.goBack()}
+        onClick={() => {
+          url === "/decks/new"
+            ? history.push("/")
+            : history.push(`/decks/${currentDeck.id}`);
+        }}
         class="btn btn-secondary mr-2 mb-4"
       >
         Cancel

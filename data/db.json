@@ -1,13 +1,13 @@
 {
   "decks": [
     {
-      "id": 1,
       "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. ",
+      "id": 1
     },
     {
       "name": "React Router",
-      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
+      "description": "React Roooouter is a collection of navigational components that compose declaratively with your application.",
       "id": 2
     }
   ],
@@ -22,12 +22,6 @@
       "id": 2,
       "front": "How do you modify the state of a different React component?",
       "back": "Not at all! State is visible to the component only.",
-      "deckId": 1
-    },
-    {
-      "id": 3,
-      "front": "How do you pass data 'down' to a React child component?",
-      "back": "As properties or props",
       "deckId": 1
     },
     {

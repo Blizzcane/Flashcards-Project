@@ -15,6 +15,7 @@ function DeckRouter({
   addNewDeck, 
   cards,
   loadDecks,
+  updateThisDeck,
   history,
   deleteThisCard,
   deleteThisDeck,
@@ -41,7 +42,10 @@ function DeckRouter({
         <EditDeck
           abortController={abortController}
           currentDeck={currentDeck}
+          loadDecks={loadDecks}
           cards={cards}
+          history={history}
+          updateThisDeck={updateThisDeck}
           addNewDeck={addNewDeck}
         />
       </Route>

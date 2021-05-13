@@ -10,6 +10,7 @@ import {
   deleteDeck,
   listDecks,
   readDeck,
+  updateDeck,
 } from "../utils/api/index";
 import DeckRouter from "./Decks/DeckRouter";
 
@@ -55,6 +56,17 @@ function Layout() {
     }
   }
 
+  //updates deck
+  async function updateThisDeck(updatedDeck){
+    try {
+      updateDeck(updatedDeck, signal);
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        throw error;
+      }
+    }
+  }
+  
   //deletes deck by id and returns home
   async function deleteThisDeck(id) {
     try {
@@ -116,6 +128,8 @@ function Layout() {
               abortController={abortController}
               deleteThisDeck={deleteThisDeck}
               addNewDeck={addNewDeck} 
+              updateThisDeck={updateThisDeck}
+              history={history}
             />
           </Route>
 
@@ -135,6 +149,7 @@ function Layout() {
               currentDeck={currentDeck}
               setCurrentDeck={setCurrentDeck}
               deleteThisDeck={deleteThisDeck}
+              updateThisDeck={updateThisDeck}
               abortController={abortController}
               loadDecks={loadDecks}
               cards={cards}
