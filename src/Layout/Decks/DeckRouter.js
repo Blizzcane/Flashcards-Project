@@ -15,6 +15,7 @@ function DeckRouter({
   addNewDeck,
   setCards,
   cards,
+  history
 }) {
   const { deckId } = useParams();
   useEffect(() => {
@@ -41,7 +42,7 @@ function DeckRouter({
   return (
     <Switch>
       <Route path="/decks/:deckId/study">
-        <Study currentDeck={currentDeck} cards={cards} />
+        <Study currentDeck={currentDeck} cards={cards} history={history}/>
       </Route>
       <Route path="/decks/:deckId/edit">
         <EditDeck
