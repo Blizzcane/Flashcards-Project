@@ -22,8 +22,7 @@ function DeckRouter({
   getDeck
 }) {
   const { deckId } = useParams();
-  useEffect(() => {
-    console.log("useEffect");
+  useEffect(() => { 
     getDeck(deckId);
 
     return () => {
@@ -54,7 +53,9 @@ function DeckRouter({
         <CardEditor
           currentDeck={currentDeck}
           addCard={addCard}
+          getDeck={getDeck}
           cards={cards}
+          deckId={deckId}
           abortController={abortController}
         />
       </Route>

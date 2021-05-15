@@ -1,27 +1,33 @@
 {
   "decks": [
     {
+      "id": 1,
       "name": "Rendering in React",
-      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. ",
-      "id": 1
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
       "name": "React Router",
-      "description": "React Roooouter is a collection of navigational components that compose declaratively with your application.",
+      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
     }
   ],
   "cards": [
     {
+      "front": "Differentiate betweefdn Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updsdates are faster but do not directly update the HTML",
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
     {
       "id": 2,
       "front": "How do you modify the state of a different React component?",
       "back": "Not at all! State is visible to the component only.",
+      "deckId": 1
+    },
+    {
+      "front": "How do you pass data 'down' to a React child component?",
+      "back": "As properties or props dsfasfds",
+      "id": 3,
       "deckId": 1
     },
     {
@@ -37,11 +43,28 @@
       "id": 5
     },
     {
-      "cards": [],
-      "front": "b",
+      "front": "b ",
       "back": "b",
+      "id": 7,
+      "deckId": 1
+    },
+    {
+      "front": "new ",
+      "back": "card",
       "deckId": 1,
-      "id": 7
+      "id": 8
+    },
+    {
+      "front": "testing",
+      "back": "testing",
+      "deckId": 1,
+      "id": 9
+    },
+    {
+      "front": "testing enw",
+      "back": "sdaf",
+      "deckId": 1,
+      "id": 10
     }
   ]
 }

@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import { deleteCard } from "../../utils/api";
 import CardForm from "./CardForm";
 
-function CardEditor({ currentDeck, addCard, cards, abortController }) {
+function CardEditor({
+  deckId,
+  currentDeck,
+  getDeck,
+  addCard,
+  cards,
+  abortController,
+}) {
   return (
     <div>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
         </ol>
@@ -15,7 +23,9 @@ function CardEditor({ currentDeck, addCard, cards, abortController }) {
       <Switch>
         <Route path="/decks/:deckId/cards/:cardId/edit">
           <CardForm
+            deckId={deckId}
             cards={cards}
+            getDeck={getDeck}
             addCard={addCard}
             currentDeck={currentDeck}
             abortController={abortController}

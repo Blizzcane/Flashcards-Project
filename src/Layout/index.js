@@ -33,10 +33,8 @@ function Layout() {
 
   async function loadDecks() {
     try {
-      const response = await listDecks(signal);
-      console.log("response:", response);
-      setDecks(response);
-      console.log("decks:", decks); 
+      const response = await listDecks(signal); 
+      setDecks(response); 
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
