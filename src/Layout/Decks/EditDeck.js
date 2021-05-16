@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import Form from "./Form";
 
 function EditDeck({
@@ -9,7 +9,7 @@ function EditDeck({
   addNewDeck,
   cards,
   history,
-  updateThisDeck
+  updateThisDeck,
 }) {
   return (
     <div>
@@ -24,15 +24,19 @@ function EditDeck({
           <li className="breadcrumb-item active">Edit Deck</li>
         </ol>
       </nav>
-      <Form
-        abortController={abortController}
-        currentDeck={currentDeck}
-        loadDecks={loadDecks}
-        cards={cards}
-        updateThisDeck={updateThisDeck}
-        history={history}
-        addNewDeck={addNewDeck}
-      />
+      <Switch>
+        <Route>
+          <Form
+            abortController={abortController}
+            currentDeck={currentDeck}
+            loadDecks={loadDecks}
+            cards={cards}
+            updateThisDeck={updateThisDeck}
+            history={history}
+            addNewDeck={addNewDeck}
+          />
+        </Route> 
+      </Switch>
     </div>
   );
 }
