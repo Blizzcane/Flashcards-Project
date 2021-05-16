@@ -18,23 +18,35 @@ import DeckRouter from "./Decks/DeckRouter";
 function Layout() {
   const [decks, setDecks] = useState([]);
   const [currentDeck, setCurrentDeck] = useState([]);
+  //used to re-render components
+  const [numOfDecks, setNumOfDecks] = useState(0);
+  const [numOfCards, setNumOfCards] = useState(0);
+
   const [cards, setCards] = useState([]);
   const abortController = new AbortController();
   const signal = abortController.signal;
   const history = useHistory();
 
+  const updateCardCount = (number) => {
+    setNumOfCards(() => numOfCards + number);
+  };
+
+  const updateDeckCount = (number) => {
+    setNumOfDecks(() => numOfDecks + number);
+  };
+
   useEffect(() => {
     loadDecks();
-    
+
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [numOfDecks]);
 
   async function loadDecks() {
     try {
-      const response = await listDecks(signal); 
-      setDecks(response); 
+      const response = await listDecks(signal);
+      setDecks(response);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
@@ -56,7 +68,7 @@ function Layout() {
   }
 
   //updates deck
-  async function updateThisDeck(updatedDeck){
+  async function updateThisDeck(updatedDeck) {
     try {
       updateDeck(updatedDeck, signal);
     } catch (error) {
@@ -65,7 +77,7 @@ function Layout() {
       }
     }
   }
-  
+
   //deletes deck by id and returns home
   async function deleteThisDeck(id) {
     try {
@@ -75,7 +87,7 @@ function Layout() {
         )
       ) {
         await deleteDeck(id, signal);
-        loadDecks();
+        updateDeckCount(-1);
         history.push("/");
       }
     } catch (error) {
@@ -93,8 +105,8 @@ function Layout() {
           "Delete this card?\n\nYou will not be able to recover it."
         )
       ) {
-        await deleteCard(id, signal);  
-        loadDecks();
+        await deleteCard(id, signal);
+        updateCardCount(-1);
       }
     } catch (error) {
       if (error.name !== "AbortError") {
@@ -117,12 +129,13 @@ function Layout() {
   async function addCard(deckId, card) {
     try {
       createCard(deckId, card, signal);
+      updateCardCount(1);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
       }
     }
-  } 
+  }
 
   return (
     <>
@@ -135,7 +148,7 @@ function Layout() {
               decks={decks}
               abortController={abortController}
               deleteThisDeck={deleteThisDeck}
-              addNewDeck={addNewDeck} 
+              addNewDeck={addNewDeck}
               addCard={addCard}
               updateThisDeck={updateThisDeck}
               history={history}
@@ -144,7 +157,7 @@ function Layout() {
 
           <Route path="/decks/new">
             <NewDeck
-              addNewDeck={addNewDeck} 
+              addNewDeck={addNewDeck}
               abortController={abortController}
               loadDecks={loadDecks}
               addCard={addCard}
@@ -155,19 +168,21 @@ function Layout() {
           </Route>
 
           <Route path="/decks/:deckId/">
-            <DeckRouter 
+            <DeckRouter
               currentDeck={currentDeck}
               setCurrentDeck={setCurrentDeck}
               deleteThisDeck={deleteThisDeck}
               updateThisDeck={updateThisDeck}
               addCard={addCard}
+              updateCardCount={updateCardCount}
               abortController={abortController}
               loadDecks={loadDecks}
+              numOfCards={numOfCards}
               cards={cards}
               getDeck={getDeck}
               setCards={setCards}
               history={history}
-              addNewDeck={addNewDeck} 
+              addNewDeck={addNewDeck}
               deleteThisCard={deleteThisCard}
             />
           </Route>

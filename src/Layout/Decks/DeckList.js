@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
-function DeckList({ decks, deleteThisDeck , addCard, cards, history }) {
+function DeckList({ decks, deleteThisDeck }) {
   const list = decks.map((deck, index) => {
     return (
       <div key={index} className="card ">

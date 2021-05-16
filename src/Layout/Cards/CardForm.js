@@ -2,12 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useRouteMatch } from "react-router-dom";
 import { readCard, updateCard } from "../../utils/api";
 
-function CardForm({ currentDeck, deckId, getDeck, addCard, abortController }) {
+function CardForm({
+  currentDeck,
+  mode,
+  setMode,
+  setCardId,
+  addCard,
+  updateCardCount,
+  abortController,
+}) {
+  const { url } = useRouteMatch();
+  const { cardId } = useParams();
+  setCardId(cardId);
+  setMode(url === `/decks/${currentDeck.id}/cards/new` ? "new" : "edit");
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormState });
-  const { url } = useRouteMatch();
-  const mode = url === `/decks/${currentDeck.id}/cards/new` ? "new" : "edit";
-  const { cardId } = useParams();
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -37,14 +46,16 @@ function CardForm({ currentDeck, deckId, getDeck, addCard, abortController }) {
     //check which route the user is in.
     console.log("Submitted:", formData);
     if (mode === "new") {
-      addCard(currentDeck.id, formData); 
+      addCard(currentDeck.id, formData);
       setFormData({ ...initialFormState });
+
+      updateCardCount(1);
     } else {
       formData.id = cardId;
       formData.deckId = currentDeck.id;
       console.log(formData);
       updateCard(formData, abortController.signal);
-      getDeck();
+      updateCardCount(1);
     }
   };
 
@@ -74,7 +85,7 @@ function CardForm({ currentDeck, deckId, getDeck, addCard, abortController }) {
         to={`/decks/${currentDeck.id}`}
         className="btn btn-secondary mr-2 mb-4"
       >
-        {(mode === "edit" ? "Cancel" : "Done")}
+        {mode === "edit" ? "Cancel" : "Done"}
       </Link>
       <button type="submit" className="btn btn-primary  mb-4">
         Save

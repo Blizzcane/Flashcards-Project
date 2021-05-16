@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch, useParams } from "react-router"; 
+import { Route, Switch, useParams } from "react-router";
 import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
@@ -11,31 +11,36 @@ function DeckRouter({
   currentDeck,
   setCurrentDeck,
   abortController,
-  addNewDeck, 
+  addNewDeck,
   cards,
   loadDecks,
   updateThisDeck,
   history,
   addCard,
+  updateCardCount,
+  numOfCards,
   deleteThisCard,
   deleteThisDeck,
-  getDeck
+  getDeck,
 }) {
   const { deckId } = useParams();
-  useEffect(() => { 
+  useEffect(() => {
     getDeck(deckId);
 
     return () => {
       abortController.abort();
     };
-  }, [deckId]);
-
- 
+  }, [deckId, numOfCards]);
 
   return (
     <Switch>
       <Route path="/decks/:deckId/study">
-        <Study currentDeck={currentDeck} addCard={addCard} cards={cards} history={history}/>
+        <Study
+          currentDeck={currentDeck}
+          addCard={addCard}
+          cards={cards}
+          history={history}
+        />
       </Route>
       <Route path="/decks/:deckId/edit">
         <EditDeck
@@ -54,6 +59,8 @@ function DeckRouter({
           currentDeck={currentDeck}
           addCard={addCard}
           getDeck={getDeck}
+          updateCardCount={updateCardCount}
+          loadDecks={loadDecks}
           cards={cards}
           deckId={deckId}
           abortController={abortController}
