@@ -13,9 +13,9 @@
   ],
   "cards": [
     {
-      "front": "Differentiate betweefdn Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updsdates are faster but do not directly update the HTML",
       "id": 1,
+      "front": "Differentiate between Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
     {
@@ -25,9 +25,9 @@
       "deckId": 1
     },
     {
-      "front": "How do you pass data 'up' to a React child component?",
-      "back": "As properties or props dsfasfds",
       "id": 3,
+      "front": "How do you pass data 'down' to a React child component?",
+      "back": "As properties or props",
       "deckId": 1
     },
     {
@@ -43,70 +43,11 @@
       "id": 5
     },
     {
-      "front": "new ",
-      "back": "card",
+      "cards": [],
+      "front": "b",
+      "back": "b",
       "deckId": 1,
-      "id": 8
-    },
-    {
-      "front": "testing",
-      "back": "testing",
-      "deckId": 1,
-      "id": 9
-    },
-    {
-      "front": "testing enw",
-      "back": "sdaf",
-      "deckId": 1,
-      "id": 10
-    },
-    {
-      "front": "kjn",
-      "back": "n",
-      "deckId": 1,
-      "id": 11
-    },
-    {
-      "front": "iop",
-      "back": "opi",
-      "deckId": 1,
-      "id": 12
-    },
-    {
-      "front": "sdfa",
-      "back": "dsaf",
-      "deckId": 1,
-      "id": 13
-    },
-    {
-      "front": "nfew",
-      "back": "fes",
-      "deckId": 1,
-      "id": 14
-    },
-    {
-      "front": "teing",
-      "back": "sldfa",
-      "deckId": 1,
-      "id": 15
-    },
-    {
-      "front": "a;jpfo",
-      "back": "ldsnf",
-      "deckId": 1,
-      "id": 16
-    },
-    {
-      "front": "uuuu",
-      "back": "iiii",
-      "deckId": 1,
-      "id": 17
-    },
-    {
-      "front": "tsettes",
-      "back": "tes",
-      "deckId": 2,
-      "id": 18
+      "id": 7
     }
   ]
 }
