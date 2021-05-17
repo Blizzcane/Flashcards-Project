@@ -25,6 +25,7 @@ function DeckRouter({
 }) {
   const { deckId } = useParams();
   useEffect(() => {
+    loadDecks();
     getDeck(deckId);
 
     return () => {
