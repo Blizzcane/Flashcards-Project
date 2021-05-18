@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import {
-  Link,
-  Route,
-  Switch
-} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import { readCard } from "../../utils/api";
 import CardForm from "./CardForm";
 
 function CardEditor({
@@ -15,32 +12,20 @@ function CardEditor({
   cards,
   loadDecks,
   abortController,
-}) { 
+}) {
   const [mode, setMode] = useState("new");
-  const [cardId, setCardId] = useState();
+
+  useEffect(() => {
+    const card = await readCard()
+  }, []);
 
   return (
     <div>
-      <nav>
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link to={`/decks/${currentDeck.id}`}>{currentDeck.name}</Link>
-          </li>
-          <li className="breadcrumb-item active">
-            {mode === "new" ? "Add Card" : `Edit Card ${cardId}`}
-          </li>
-        </ol>
-      </nav>
-      <h2>{(mode === "new" ? `${currentDeck.name}: Add Card` : "Edit Card")}</h2>
       <Switch>
         <Route path="/decks/:deckId/cards/:cardId/edit">
-          <CardForm 
+          <CardForm
             setMode={setMode}
             mode={mode}
-            setCardId={setCardId}
             deckId={deckId}
             cards={cards}
             updateCardCount={updateCardCount}
@@ -52,10 +37,9 @@ function CardEditor({
           />
         </Route>
         <Route path="/decks/:deckId/cards/new">
-          <CardForm 
+          <CardForm
             mode={mode}
             setMode={setMode}
-            setCardId={setCardId}
             updateCardCount={updateCardCount}
             addCard={addCard}
             cards={cards}
