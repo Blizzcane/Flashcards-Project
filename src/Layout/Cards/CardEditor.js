@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   Link,
   Route,
-  Switch,
-  useParams,
-  useRouteMatch,
+  Switch
 } from "react-router-dom";
 import CardForm from "./CardForm";
 

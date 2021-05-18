@@ -14,6 +14,11 @@
       "name": "Windows",
       "description": "PC",
       "id": 3
+    },
+    {
+      "name": "plantsdd",
+      "description": "cruz",
+      "id": 4
     }
   ],
   "cards": [
@@ -77,6 +82,12 @@
       "back": "Nuggets",
       "deckId": 3,
       "id": 11
+    },
+    {
+      "front": "tet",
+      "back": "testing new deck",
+      "deckId": 1,
+      "id": 12
     }
   ]
 }
