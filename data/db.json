@@ -2,7 +2,7 @@
   "decks": [
     {
       "name": "Rendering in Nsdfw",
-      "description": "React's strusdcture allows for quickly building a complex web application that relies on DOM manipulation. ",
+      "description": "React's structure allows for quickly building a complex web application that relies on DOM manipulation. ",
       "id": 1
     },
     {
@@ -16,18 +16,12 @@
       "id": 3
     },
     {
-      "name": "plantsdd",
-      "description": "cruz",
+      "name": "Mac",
+      "description": "Intosh",
       "id": 4
     }
   ],
   "cards": [
-    {
-      "front": "d",
-      "back": "sd",
-      "id": 1,
-      "deckId": 1
-    },
     {
       "id": 2,
       "front": "How do you modify the state of a different React component?",
@@ -53,25 +47,6 @@
       "id": 5
     },
     {
-      "cards": [],
-      "front": "b",
-      "back": "b",
-      "deckId": 1,
-      "id": 7
-    },
-    {
-      "front": "new",
-      "back": "card",
-      "deckId": 1,
-      "id": 8
-    },
-    {
-      "front": "card",
-      "back": "new",
-      "deckId": 1,
-      "id": 9
-    },
-    {
       "front": "Mcaffee",
       "back": "Coffee",
       "deckId": 3,
@@ -82,18 +57,6 @@
       "back": "Nuggets",
       "deckId": 3,
       "id": 11
-    },
-    {
-      "front": "tet",
-      "back": "testing new deck",
-      "deckId": 1,
-      "id": 12
-    },
-    {
-      "front": "sd",
-      "back": "sd",
-      "deckId": 1,
-      "id": 13
     }
   ]
 }
