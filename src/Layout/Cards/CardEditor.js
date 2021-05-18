@@ -15,9 +15,7 @@ function CardEditor({
 }) {
   const [mode, setMode] = useState("new");
 
-  useEffect(() => {
-    const card = await readCard()
-  }, []);
+   
 
   return (
     <div>
