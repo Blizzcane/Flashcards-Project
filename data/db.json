@@ -1,8 +1,8 @@
 {
   "decks": [
     {
-      "name": "Rendering in New",
-      "description": "React's dsfsdfdasfstructure allows for quickly building a complex web application that relies on DOM manipulation. ",
+      "name": "Rendering in Nsdfw",
+      "description": "React's strusdcture allows for quickly building a complex web application that relies on DOM manipulation. ",
       "id": 1
     },
     {
@@ -23,9 +23,9 @@
   ],
   "cards": [
     {
+      "front": "d",
+      "back": "sd",
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.",
-      "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
     {
@@ -88,6 +88,12 @@
       "back": "testing new deck",
       "deckId": 1,
       "id": 12
+    },
+    {
+      "front": "sd",
+      "back": "sd",
+      "deckId": 1,
+      "id": 13
     }
   ]
 }

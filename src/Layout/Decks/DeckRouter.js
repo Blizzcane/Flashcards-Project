@@ -49,6 +49,7 @@ function DeckRouter({
           currentDeck={currentDeck}
           addCard={addCard}
           loadDecks={loadDecks}
+          updateCardCount={updateCardCount}
           cards={cards}
           history={history}
           updateThisDeck={updateThisDeck}

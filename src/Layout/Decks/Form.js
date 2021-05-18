@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
-function Form({ currentDeck, addNewDeck, history, updateThisDeck, loadDecks }) {
+function Form({
+  currentDeck,
+  addNewDeck,
+  history,
+  updateThisDeck,
+  loadDecks,
+  updateCardCount,
+}) {
   const { url } = useRouteMatch();
   const initialFormState = {
     name: currentDeck ? currentDeck.name : "",
@@ -14,6 +21,7 @@ function Form({ currentDeck, addNewDeck, history, updateThisDeck, loadDecks }) {
       [target.name]: target.value,
     });
   };
+ 
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,10 +31,11 @@ function Form({ currentDeck, addNewDeck, history, updateThisDeck, loadDecks }) {
       const newDeckId = await addNewDeck(formData);
       history.push(`/decks/${newDeckId}`);
     } else {
-      formData.id = currentDeck.id; 
+      formData.id = currentDeck.id;
       updateThisDeck(formData);
       loadDecks();
-      history.push(`/decks/${currentDeck.id}`)
+      updateCardCount(1);
+      history.push(`/decks/${currentDeck.id}`);
     }
   }
 

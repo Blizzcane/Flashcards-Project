@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import { Link, Route, Switch } from "react-router-dom";
 import Form from "./Form";
 
@@ -8,7 +8,8 @@ function EditDeck({
   loadDecks,
   addNewDeck,
   cards,
-  history,
+  updateCardCount,
+  history, 
   updateThisDeck,
 }) {
   return (
@@ -31,6 +32,7 @@ function EditDeck({
             currentDeck={currentDeck}
             loadDecks={loadDecks}
             cards={cards}
+            updateCardCount={updateCardCount} 
             updateThisDeck={updateThisDeck}
             history={history}
             addNewDeck={addNewDeck}
