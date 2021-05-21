@@ -1,7 +1,7 @@
 {
   "decks": [
     {
-      "name": "Rendering in Nsdfw",
+      "name": "Rendering in React",
       "description": "React's structure allows for quickly building a complex web application that relies on DOM manipulation. ",
       "id": 1
     },
@@ -23,9 +23,9 @@
   ],
   "cards": [
     {
+      "front": "New York",
+      "back": "California",
       "id": 2,
-      "front": "How do you modify the state of a different React component?",
-      "back": "Not at all! State is visible to the component only.",
       "deckId": 1
     },
     {
@@ -57,6 +57,12 @@
       "back": "Nuggets",
       "deckId": 3,
       "id": 11
+    },
+    {
+      "front": "Making a new Card",
+      "back": "Backside",
+      "deckId": 1,
+      "id": 14
     }
   ]
 }
