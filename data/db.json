@@ -24,11 +24,21 @@
       "name": "kishor",
       "description": "kishor",
       "id": 5
+    },
+    {
+      "name": ",dsnfksdfk",
+      "description": "klj;sdlkjfakf",
+      "id": 6
+    },
+    {
+      "name": "final test",
+      "description": "teseting is done",
+      "id": 7
     }
   ],
   "cards": [
     {
-      "front": "New York",
+      "front": "New York City",
       "back": "California",
       "id": 2,
       "deckId": 1
@@ -74,6 +84,12 @@
       "back": "back",
       "deckId": 1,
       "id": 15
+    },
+    {
+      "front": "working",
+      "back": "cards",
+      "deckId": 7,
+      "id": 16
     }
   ]
 }

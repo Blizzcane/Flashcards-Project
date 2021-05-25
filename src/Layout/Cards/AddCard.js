@@ -2,18 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useRouteMatch } from "react-router-dom";
 import { readCard, updateCard } from "../../utils/api";
 
-function CardForm({
-  currentDeck,
-  mode,
-  setMode,
-  addCard,
-  updateCardCount,
-  abortController,
-}) {
-  const { url } = useRouteMatch();
-  const { cardId } = useParams(); 
-  setMode(url === `/decks/${currentDeck.id}/cards/new` ? "new" : "edit");
-  console.log("Mode:",mode);
+function AddCard({ currentDeck, addCard, updateCardCount, abortController }) {
+  const { cardId } = useParams();
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormState });
 
@@ -27,35 +17,25 @@ function CardForm({
   useEffect(() => {
     console.log("useEffect CardForm");
     async function getCard(id) {
-      if (mode === "edit") {
-        const cardData = await readCard(id, abortController.signal);
-        console.log("cardData:", cardData);
-        setFormData({
-          front: cardData.front,
-          back: cardData.back,
-        });
-      }
+      const cardData = await readCard(id, abortController.signal);
+      console.log("cardData:", cardData);
+      setFormData({
+        front: cardData.front,
+        back: cardData.back,
+      });
     }
     getCard(cardId);
 
     return () => abortController.abort();
-  }, [cardId]);
+  }, [currentDeck]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     //check which route the user is in.
     console.log("Submitted:", formData);
-    if (mode === "new") {
-      addCard(currentDeck.id, formData);
-      setFormData({ ...initialFormState });
-      updateCardCount(1);
-    } else {
-      formData.id = cardId;
-      formData.deckId = currentDeck.id;
-      console.log(formData);
-      updateCard(formData, abortController.signal);
-      updateCardCount(1);
-    }
+    addCard(currentDeck.id, formData);
+    setFormData({ ...initialFormState });
+    updateCardCount(1);
   };
 
   return (
@@ -68,12 +48,10 @@ function CardForm({
           <li className="breadcrumb-item">
             <Link to={`/decks/${currentDeck.id}`}>{currentDeck.name}</Link>
           </li>
-          <li className="breadcrumb-item active">
-            "{mode === "new" ? "Add Card" : `Edit Card ${cardId}`}"
-          </li>
+          <li className="breadcrumb-item active">Add Card</li>
         </ol>
       </nav>
-      <h2>{mode === "new" ? `${currentDeck.name}: Add Card` : "Edit Card"}</h2>
+      <h2> Add Card </h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="front">Front</label>
         <textarea
@@ -99,7 +77,7 @@ function CardForm({
           to={`/decks/${currentDeck.id}`}
           className="btn btn-secondary mr-2 mb-4"
         >
-          {mode === "edit" ? "Cancel" : "Done"}
+          Done
         </Link>
         <button type="submit" className="btn btn-primary  mb-4">
           Save
@@ -109,4 +87,4 @@ function CardForm({
   );
 }
 
-export default CardForm;
+export default AddCard;

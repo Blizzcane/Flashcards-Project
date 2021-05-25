@@ -3,7 +3,8 @@ import { Route, Switch, useParams } from "react-router";
 import Study from "./Study";
 import DeckViewer from "./DeckViewer";
 import EditDeck from "./EditDeck";
-import CardEditor from "../Cards/CardEditor";
+import AddCard from "../Cards/AddCard";
+import EditCard from "../Cards/EditCard";
 
 //Switchboard for deck routes
 
@@ -35,6 +36,26 @@ function DeckRouter({
 
   return (
     <Switch>
+      <Route path="/decks/:deckId/cards/:cardId/edit">
+        <EditCard
+          deckId={deckId}
+          cards={cards}
+          updateCardCount={updateCardCount}
+          getDeck={getDeck}
+          loadDecks={loadDecks}
+          currentDeck={currentDeck}
+          abortController={abortController}
+        />
+      </Route>
+      <Route path="/decks/:deckId/cards/new">
+        <AddCard
+          updateCardCount={updateCardCount}
+          cards={cards}
+          loadDecks={loadDecks}
+          currentDeck={currentDeck}
+          abortController={abortController}
+        />
+      </Route>
       <Route path="/decks/:deckId/study">
         <Study
           currentDeck={currentDeck}
@@ -54,18 +75,6 @@ function DeckRouter({
           history={history}
           updateThisDeck={updateThisDeck}
           addNewDeck={addNewDeck}
-        />
-      </Route>
-      <Route path="/decks/:deckId/cards">
-        <CardEditor
-          currentDeck={currentDeck}
-          addCard={addCard}
-          getDeck={getDeck}
-          updateCardCount={updateCardCount}
-          loadDecks={loadDecks}
-          cards={cards}
-          deckId={deckId}
-          abortController={abortController}
         />
       </Route>
       <Route path="/decks/:deckId">
