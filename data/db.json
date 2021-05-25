@@ -1,41 +1,27 @@
 {
   "decks": [
     {
+      "id": 1,
       "name": "Rendering in React",
-      "description": "React's structure allows for quickly building a complex web application that relies on DOM manipulation. ",
-      "id": 1
+      "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "Windows",
-      "description": "PC",
-      "id": 3
-    },
-    {
-      "name": "Mac",
-      "description": "Intosh",
-      "id": 4
-    },
-    {
-      "name": "kishor",
-      "description": "kishor",
-      "id": 5
-    },
-    {
-      "name": ",dsnfksdfk",
-      "description": "klj;sdlkjfakf",
-      "id": 6
     }
   ],
   "cards": [
     {
-      "front": "New York City",
-      "back": "California",
+      "id": 1,
+      "front": "Differentiate between Real DOM and Virtual DOM.",
+      "back": "Virtual DOM updates are faster but do not directly update the HTML",
+      "deckId": 1
+    },
+    {
       "id": 2,
+      "front": "How do you modify the state of a different React component?",
+      "back": "Not at all! State is visible to the component only.",
       "deckId": 1
     },
     {
@@ -57,40 +43,11 @@
       "id": 5
     },
     {
-      "front": "Mcaffee",
-      "back": "Coffee",
-      "deckId": 3,
-      "id": 10
-    },
-    {
-      "front": "Chicken",
-      "back": "Nuggets",
-      "deckId": 3,
-      "id": 11
-    },
-    {
-      "front": "Making a new Cards",
-      "back": "Backside",
-      "id": 14,
-      "deckId": 1
-    },
-    {
-      "front": "front",
-      "back": "back",
+      "cards": [],
+      "front": "b",
+      "back": "b",
       "deckId": 1,
-      "id": 15
-    },
-    {
-      "front": "llsaf",
-      "back": "ljsdlfs",
-      "deckId": 1,
-      "id": 17
-    },
-    {
-      "front": "iiowoiew",
-      "back": "sdfaf",
-      "deckId": 1,
-      "id": 18
+      "id": 7
     }
   ]
 }
