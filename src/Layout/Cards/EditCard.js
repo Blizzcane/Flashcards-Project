@@ -30,7 +30,7 @@ function EditCard({ currentDeck, updateCardCount, abortController }) {
   }, [cardId]);
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     console.log("Edited Card:", formData);
     formData.id = cardId;
     formData.deckId = currentDeck.id;

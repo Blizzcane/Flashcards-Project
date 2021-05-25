@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
-function AddCard({ currentDeck, addCard, updateCardCount }) { 
+function AddCard({ currentDeck, addCard, updateCardCount }) {
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormState });
 
@@ -10,10 +10,10 @@ function AddCard({ currentDeck, addCard, updateCardCount }) {
       ...formData,
       [target.name]: target.value,
     });
-  }; 
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     console.log("Added Card:", formData);
     addCard(currentDeck.id, formData);
     setFormData({ ...initialFormState });

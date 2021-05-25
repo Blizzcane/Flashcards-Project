@@ -21,7 +21,6 @@ function Form({
       [target.name]: target.value,
     });
   };
- 
 
   async function handleSubmit(event) {
     event.preventDefault();

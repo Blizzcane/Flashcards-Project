@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import Form from "./Form";
 
@@ -9,7 +9,7 @@ function EditDeck({
   addNewDeck,
   cards,
   updateCardCount,
-  history, 
+  history,
   updateThisDeck,
 }) {
   return (
@@ -32,12 +32,12 @@ function EditDeck({
             currentDeck={currentDeck}
             loadDecks={loadDecks}
             cards={cards}
-            updateCardCount={updateCardCount} 
+            updateCardCount={updateCardCount}
             updateThisDeck={updateThisDeck}
             history={history}
             addNewDeck={addNewDeck}
           />
-        </Route> 
+        </Route>
       </Switch>
     </div>
   );

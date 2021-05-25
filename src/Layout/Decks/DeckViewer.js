@@ -1,15 +1,10 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom"; 
+import { Link, useRouteMatch } from "react-router-dom";
 import CardList from "./CardList";
 
 //view individual decks
 
-function DeckViewer({
-  currentDeck,
-  cards, 
-  deleteThisDeck,
-  deleteThisCard,
-}) {
+function DeckViewer({ currentDeck, cards, deleteThisDeck, deleteThisCard }) {
   const { url } = useRouteMatch();
 
   return (
@@ -91,11 +86,7 @@ function DeckViewer({
         </button>
       </div>
       <h3>Cards</h3>
-      <CardList
-        deleteThisCard={deleteThisCard}
-        cards={cards}
-        url={url} 
-      />
+      <CardList deleteThisCard={deleteThisCard} cards={cards} url={url} />
     </div>
   );
 }
