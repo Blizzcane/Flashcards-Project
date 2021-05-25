@@ -1,14 +1,12 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
-import { deleteCard } from "../../utils/api";
+import { Link, useRouteMatch } from "react-router-dom"; 
 import CardList from "./CardList";
 
 //view individual decks
 
 function DeckViewer({
   currentDeck,
-  cards,
-  getDeck,
+  cards, 
   deleteThisDeck,
   deleteThisCard,
 }) {

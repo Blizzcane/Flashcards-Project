@@ -30,9 +30,8 @@ function EditCard({ currentDeck, updateCardCount, abortController }) {
   }, [cardId]);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    //check which route the user is in.
-    console.log("Submitted:", formData);
+    event.preventDefault(); 
+    console.log("Edited Card:", formData);
     formData.id = cardId;
     formData.deckId = currentDeck.id;
     console.log(formData);

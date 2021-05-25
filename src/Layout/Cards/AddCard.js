@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams, useRouteMatch } from "react-router-dom";
-import { readCard, updateCard } from "../../utils/api";
+import React, { useState } from "react";
+import { Link } from "react-router-dom"; 
 
-function AddCard({ currentDeck, addCard, updateCardCount, abortController }) {
-  const { cardId } = useParams();
+function AddCard({ currentDeck, addCard, updateCardCount }) { 
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormState });
 
@@ -12,27 +10,11 @@ function AddCard({ currentDeck, addCard, updateCardCount, abortController }) {
       ...formData,
       [target.name]: target.value,
     });
-  };
-
-  useEffect(() => {
-    console.log("useEffect CardForm");
-    async function getCard(id) {
-      const cardData = await readCard(id, abortController.signal);
-      console.log("cardData:", cardData);
-      setFormData({
-        front: cardData.front,
-        back: cardData.back,
-      });
-    }
-    getCard(cardId);
-
-    return () => abortController.abort();
-  }, [currentDeck]);
+  }; 
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    //check which route the user is in.
-    console.log("Submitted:", formData);
+    event.preventDefault(); 
+    console.log("Added Card:", formData);
     addCard(currentDeck.id, formData);
     setFormData({ ...initialFormState });
     updateCardCount(1);

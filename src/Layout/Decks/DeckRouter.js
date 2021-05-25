@@ -51,6 +51,7 @@ function DeckRouter({
         <AddCard
           updateCardCount={updateCardCount}
           cards={cards}
+          addCard={addCard}
           loadDecks={loadDecks}
           currentDeck={currentDeck}
           abortController={abortController}

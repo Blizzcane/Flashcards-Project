@@ -29,11 +29,6 @@
       "name": ",dsnfksdfk",
       "description": "klj;sdlkjfakf",
       "id": 6
-    },
-    {
-      "name": "final test",
-      "description": "teseting is done",
-      "id": 7
     }
   ],
   "cards": [
@@ -86,10 +81,16 @@
       "id": 15
     },
     {
-      "front": "working",
-      "back": "cards",
-      "deckId": 7,
-      "id": 16
+      "front": "llsaf",
+      "back": "ljsdlfs",
+      "deckId": 1,
+      "id": 17
+    },
+    {
+      "front": "iiowoiew",
+      "back": "sdfaf",
+      "deckId": 1,
+      "id": 18
     }
   ]
 }
