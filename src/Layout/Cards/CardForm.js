@@ -11,8 +11,9 @@ function CardForm({
   abortController,
 }) {
   const { url } = useRouteMatch();
-  const { cardId } = useParams();
+  const { cardId } = useParams(); 
   setMode(url === `/decks/${currentDeck.id}/cards/new` ? "new" : "edit");
+  console.log("Mode:",mode);
   const initialFormState = { front: "", back: "" };
   const [formData, setFormData] = useState({ ...initialFormState });
 
