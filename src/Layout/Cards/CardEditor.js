@@ -13,7 +13,7 @@ function CardEditor({
   loadDecks,
   abortController,
 }) {
-  const [mode, setMode] = useState("new");
+  const [mode, setMode] = useState("edit");
 
    
 
