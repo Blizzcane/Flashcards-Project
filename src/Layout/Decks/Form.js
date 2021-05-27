@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import { readDeck } from "../../utils/api/index";
 
 function Form({
   currentDeck,
@@ -8,6 +9,7 @@ function Form({
   updateThisDeck,
   loadDecks,
   updateCardCount,
+  abortController
 }) {
   const { url } = useRouteMatch();
   const initialFormState = {
@@ -15,6 +17,21 @@ function Form({
     description: currentDeck ? currentDeck.description : "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
+
+  useEffect(() => { 
+    const loadDeck = async () => {
+      const loadedDeck = await readDeck(currentDeck.id, abortController.signal) 
+      setFormData({
+        id: currentDeck.id,
+        name: loadedDeck.name,
+        description: loadedDeck.description,
+      })
+    }
+    loadDeck()
+    return () => abortController.abort()
+  }, [currentDeck.id])
+
+
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
