@@ -55,7 +55,7 @@ function Study({ currentDeck, cards, history }) {
           width="20"
           height="20"
           fill="currentColor"
-          class="bi bi-plus"
+          className="bi bi-plus"
           viewBox="0 0 20 20"
         >
           <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -68,14 +68,14 @@ function Study({ currentDeck, cards, history }) {
   return (
     <div>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <Link to={`/decks/${currentDeck.id}`}>{currentDeck.name}</Link>
           </li>
-          <li class="breadcrumb-item active">Study</li>
+          <li className="breadcrumb-item active">Study</li>
         </ol>
       </nav>
       <h1>Study: {currentDeck["name"]}</h1>

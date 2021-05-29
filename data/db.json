@@ -19,9 +19,9 @@
       "deckId": 1
     },
     {
-      "id": 2,
       "front": "How do you modify the state of a different React component?",
-      "back": "Not at all! State is visible to the component only.",
+      "back": "Not at all! State is visible to the component only. Test",
+      "id": 2,
       "deckId": 1
     },
     {
@@ -48,6 +48,12 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "adding a new card to test",
+      "back": "the new form component",
+      "deckId": 1,
+      "id": 8
     }
   ]
 }
