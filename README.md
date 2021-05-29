@@ -16,3 +16,8 @@ This application can be used to create decks of flash cards to help study differ
 ### Study Deck:
  ![StudyDeck](./screenshots/Study.PNG)
  
+ ## Technology
+ ### Built with:
+ - React using hooks such as useEffect and useState
+ - created with create-react-app
+
