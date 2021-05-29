@@ -19,7 +19,9 @@ function Form({
   const [formData, setFormData] = useState({ ...initialFormState });
 
   useEffect(() => { 
+    console.log("form useEffect");
     const loadDeck = async () => {
+      console.log("form useEffect loadDeck");
       const loadedDeck = await readDeck(currentDeck.id, abortController.signal) 
       setFormData({
         id: currentDeck.id,
@@ -27,9 +29,12 @@ function Form({
         description: loadedDeck.description,
       })
     }
-    loadDeck()
+    if(currentDeck){
+      loadDeck();
+    } 
+
     return () => abortController.abort()
-  }, [currentDeck.id])
+  }, [currentDeck])
 
 
   const handleChange = ({ target }) => {
@@ -57,7 +62,7 @@ function Form({
 
   return (
     <form onSubmit={handleSubmit}>
-      <label for="name">Name:</label>
+      <label htmlFor="name">Name:</label>
       <input
         id="name"
         placeholder="Deck Name"
@@ -68,7 +73,7 @@ function Form({
         name="name"
         style={{ width: "100%", marginBottom: "15px" }}
       />
-      <label for="description">Description:</label>
+      <label htmlFor="description">Description:</label>
       <textarea
         id="description"
         placeholder="Brief description of the deck"
@@ -85,11 +90,11 @@ function Form({
             ? history.push("/")
             : history.push(`/decks/${currentDeck.id}`);
         }}
-        class="btn btn-secondary mr-2 mb-4"
+        className="btn btn-secondary mr-2 mb-4"
       >
         Cancel
       </Link>
-      <button type="submit" class="btn btn-primary  mb-4">
+      <button type="submit" className="btn btn-primary  mb-4">
         Submit
       </button>
     </form>

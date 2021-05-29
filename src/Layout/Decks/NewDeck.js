@@ -11,11 +11,11 @@ function NewDeck({
   return (
     <div>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li class="breadcrumb-item active">Create Deck</li>
+          <li className="breadcrumb-item active">Create Deck</li>
         </ol>
       </nav>
       <h2 className="my-2">Create Deck</h2>
