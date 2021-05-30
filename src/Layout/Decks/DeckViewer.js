@@ -86,7 +86,11 @@ function DeckViewer({ currentDeck, cards, deleteThisDeck, deleteThisCard }) {
         </button>
       </div>
       <h3>Cards</h3>
-      <CardList deleteThisCard={deleteThisCard} cards={cards} url={url} />
+      {cards ? (
+        <CardList deleteThisCard={deleteThisCard} cards={cards} url={url} />
+      ) : (
+        "No Cards"
+      )}
     </div>
   );
 }
