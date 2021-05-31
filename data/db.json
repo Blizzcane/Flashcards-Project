@@ -29,6 +29,11 @@
       "name": "chicago",
       "description": "illinois",
       "id": 6
+    },
+    {
+      "name": "testing new deck",
+      "description": "deck description",
+      "id": 7
     }
   ],
   "cards": [
@@ -74,6 +79,12 @@
       "back": "Testing adding new card",
       "deckId": null,
       "id": 8
+    },
+    {
+      "front": "it working",
+      "back": "wow",
+      "deckId": 7,
+      "id": 9
     }
   ]
 }

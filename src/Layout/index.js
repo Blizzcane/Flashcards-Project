@@ -80,12 +80,14 @@ function Layout() {
 
   //deletes deck by id and returns home
   async function deleteThisDeck(id) {
+    console.log("delete button has been clicked");
     try {
       if (
         window.confirm(
           "Delete this deck?\n\nYou will not be able to recover it."
         )
       ) {
+        console.log("delete confirmed");
         await deleteDeck(id, signal);
         updateDeckCount(-1);
         history.push("/");
@@ -120,7 +122,7 @@ function Layout() {
       const deck = await readDeck(id, signal);
       setCurrentDeck(deck);
       setCards(deck.cards);
-      console.log("index",currentDeck);
+      console.log("index", currentDeck);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;

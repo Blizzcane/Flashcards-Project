@@ -46,8 +46,7 @@ async function fetchJson(url, options, onCancel) {
   console.log(url);
   console.log(options);
   try {
-    const response = await fetch(url, options);
-
+    const response = await fetch(url, options); 
     if (response.status < 200 || response.status > 399) {
       throw new Error(`${response.status} - ${response.statusText}`);
     }
@@ -57,7 +56,6 @@ async function fetchJson(url, options, onCancel) {
     }
 
     return await response.json();
-
   } catch (error) {
     if (error.name !== "AbortError") {
       console.error(error.stack);
