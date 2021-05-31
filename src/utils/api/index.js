@@ -43,6 +43,8 @@ function stripCards(deck) {
  */
 
 async function fetchJson(url, options, onCancel) {
+  console.log(url);
+  console.log(options);
   try {
     const response = await fetch(url, options);
 

@@ -120,6 +120,7 @@ function Layout() {
       const deck = await readDeck(id, signal);
       setCurrentDeck(deck);
       setCards(deck.cards);
+      console.log("index",currentDeck);
     } catch (error) {
       if (error.name !== "AbortError") {
         throw error;
@@ -127,6 +128,7 @@ function Layout() {
     }
   }
   async function addCard(deckId, card) {
+    console.log("deckId", deckId);
     try {
       createCard(deckId, card, signal);
       updateCardCount(1);

@@ -25,6 +25,7 @@ function DeckRouter({
   getDeck,
 }) {
   const { deckId } = useParams();
+  console.log("deckRouter, deckId", deckId);
   useEffect(() => {
     loadDecks();
     getDeck(deckId);

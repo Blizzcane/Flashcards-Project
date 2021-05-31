@@ -34,7 +34,7 @@ function DeckViewer({ currentDeck, cards, deleteThisDeck, deleteThisCard }) {
           Edit
         </Link>
         <Link
-          to={`/decks/${currentDeck.id}/study`}
+          to={`${url}/study`}
           className="btn btn-primary mr-2"
         >
           <svg
@@ -50,7 +50,7 @@ function DeckViewer({ currentDeck, cards, deleteThisDeck, deleteThisCard }) {
           Study
         </Link>
         <Link
-          to={`/decks/${currentDeck.id}/cards/new`}
+          to={`${url}/cards/new`}
           className="btn btn-primary"
         >
           <svg

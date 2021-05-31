@@ -11,19 +11,24 @@
       "id": 2
     },
     {
-      "name": "tetin",
-      "description": "new dca",
+      "name": "alabama",
+      "description": "california",
       "id": 3
     },
     {
-      "name": "testingalfd ",
-      "description": "ldsafdf",
+      "name": "Oklahoma",
+      "description": "Chicago",
       "id": 4
     },
     {
-      "name": "safasfasf",
-      "description": "sdfsafs",
+      "name": "Nebraska",
+      "description": "Delaware",
       "id": 5
+    },
+    {
+      "name": "texas",
+      "description": "alaska",
+      "id": 6
     }
   ],
   "cards": [
@@ -63,18 +68,6 @@
       "back": "b",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "sfaf",
-      "back": "sdsddfsaf",
-      "deckId": 4,
-      "id": 8
-    },
-    {
-      "front": "ewwfwe",
-      "back": "qqeqwf",
-      "deckId": 4,
-      "id": 9
     }
   ]
 }
