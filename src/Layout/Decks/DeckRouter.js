@@ -27,8 +27,9 @@ function DeckRouter({
   const { deckId } = useParams();
   console.log("deckRouter, deckId", deckId);
   useEffect(() => {
-    loadDecks();
     getDeck(deckId);
+    loadDecks();
+    
 
     return () => {
       abortController.abort();

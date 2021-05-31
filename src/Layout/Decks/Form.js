@@ -49,8 +49,9 @@ function Form({
     //check which route the user is in.
     if (url === "/decks/new") {
       formData.cards = [];
-      const newDeckId = await addNewDeck(formData);
-      history.push(`/decks/${newDeckId}`);
+      const newDeckId = await addNewDeck(formData); 
+      window.location = `/decks/${newDeckId}`;
+      // history.push(`/decks/${newDeckId}`);
     } else {
       formData.id = currentDeck.id;
       updateThisDeck(formData);
