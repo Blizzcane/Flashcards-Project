@@ -9,7 +9,7 @@ function Form({
   updateThisDeck,
   loadDecks,
   updateCardCount,
-  abortController
+  abortController,
 }) {
   const { url } = useRouteMatch();
   const initialFormState = {
@@ -18,24 +18,23 @@ function Form({
   };
   const [formData, setFormData] = useState({ ...initialFormState });
 
-  useEffect(() => { 
+  useEffect(() => {
     console.log("form useEffect");
     const loadDeck = async () => {
       console.log("form useEffect loadDeck");
-      const loadedDeck = await readDeck(currentDeck.id, abortController.signal) 
+      const loadedDeck = await readDeck(currentDeck.id, abortController.signal);
       setFormData({
         id: currentDeck.id,
         name: loadedDeck.name,
         description: loadedDeck.description,
-      })
-    }
-    if(currentDeck){
+      });
+    };
+    if (currentDeck) {
       loadDeck();
-    } 
+    }
 
-    return () => abortController.abort()
-  }, [currentDeck])
-
+    return () => abortController.abort();
+  }, [currentDeck]);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -49,9 +48,9 @@ function Form({
     //check which route the user is in.
     if (url === "/decks/new") {
       formData.cards = [];
-      const newDeckId = await addNewDeck(formData); 
-      window.location = `/decks/${newDeckId}`;
-      // history.push(`/decks/${newDeckId}`);
+      const newDeckId = await addNewDeck(formData);
+      // window.location = `/decks/${newDeckId}`;
+      history.push(`/decks/${newDeckId}`);
     } else {
       formData.id = currentDeck.id;
       updateThisDeck(formData);

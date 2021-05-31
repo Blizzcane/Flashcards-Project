@@ -9,6 +9,26 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
+    },
+    {
+      "name": "New Deck for testing",
+      "description": "Testing functionality of the app",
+      "id": 3
+    },
+    {
+      "name": "lsjkd",
+      "description": "lksld",
+      "id": 4
+    },
+    {
+      "name": "new",
+      "description": "lakdfa",
+      "id": 5
+    },
+    {
+      "name": "chicago",
+      "description": "illinois",
+      "id": 6
     }
   ],
   "cards": [
@@ -48,6 +68,12 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "Adding a new card",
+      "back": "Testing adding new card",
+      "deckId": null,
+      "id": 8
     }
   ]
 }

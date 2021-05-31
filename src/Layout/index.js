@@ -58,7 +58,7 @@ function Layout() {
   async function addNewDeck(deck) {
     try {
       const newDeck = await createDeck(deck, signal);
-      loadDecks();
+      updateDeckCount(1);
       return newDeck.id;
     } catch (error) {
       if (error.name !== "AbortError") {
