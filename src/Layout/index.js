@@ -35,13 +35,14 @@ function Layout() {
     setNumOfDecks(() => numOfDecks + number);
   };
 
-  useEffect(() => {
-    loadDecks();
+  useEffect(() => { 
+    loadDecks(); 
 
     return () => {
       abortController.abort();
     };
   }, [numOfDecks]);
+
 
   async function loadDecks() {
     try {
@@ -88,9 +89,9 @@ function Layout() {
         )
       ) {
         console.log("delete confirmed");
-        await deleteDeck(id, signal);
-        updateDeckCount(-1);
-        history.push("/");
+        await deleteDeck(id, signal); 
+        updateDeckCount(-1); 
+        history.push("/"); 
       }
     } catch (error) {
       if (error.name !== "AbortError") {
