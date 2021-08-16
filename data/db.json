@@ -9,6 +9,16 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
+    },
+    {
+      "name": "Kishor",
+      "description": "How well do you know Kishor?",
+      "id": 6
+    },
+    {
+      "name": "Magic cards",
+      "description": "Tsunami",
+      "id": 7
     }
   ],
   "cards": [
@@ -48,6 +58,78 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "What is my middle name?",
+      "back": "I don't have one",
+      "deckId": 6,
+      "id": 34
+    },
+    {
+      "front": "What sports did I do in high school?",
+      "back": "Football, Gymnastics, Wrestling",
+      "deckId": 6,
+      "id": 35
+    },
+    {
+      "front": "What is my favorite video game?",
+      "back": "Apex Legends",
+      "deckId": 6,
+      "id": 36
+    },
+    {
+      "front": "If I could have my dream house, what color would it be?",
+      "back": "Black",
+      "deckId": 6,
+      "id": 37
+    },
+    {
+      "front": "What is my favorite meal?",
+      "back": "Lasagna",
+      "deckId": 6,
+      "id": 38
+    },
+    {
+      "front": "Where do I want to live?",
+      "back": "Switzerland",
+      "deckId": 6,
+      "id": 39
+    },
+    {
+      "front": "What Junior high did I go to ?",
+      "back": "Holmes Jr. High",
+      "deckId": 6,
+      "id": 40
+    },
+    {
+      "front": "What was my favorite cartoon when I was young?",
+      "back": "Tom and Jerry",
+      "deckId": 6,
+      "id": 41
+    },
+    {
+      "front": "What car do I want to drive?",
+      "back": "any of these: Tesla, 2021 Acura TLX, MACH1 Mustang, Polestar",
+      "deckId": 6,
+      "id": 42
+    },
+    {
+      "front": "What is my favorite movie?",
+      "back": "Any of these: Mouse Hunt, Tenet, What we do in the shadows, Dumb and Dumber.",
+      "deckId": 6,
+      "id": 43
+    },
+    {
+      "front": "What sports/activity did I do outside of HS.",
+      "back": "Karate, Dance",
+      "deckId": 6,
+      "id": 44
+    },
+    {
+      "front": "How many kids do I want",
+      "back": "2-3",
+      "deckId": 6,
+      "id": 45
     }
   ]
 }
