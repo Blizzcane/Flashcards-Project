@@ -5,7 +5,7 @@ require("dotenv").config();
  */
 // const API_BASE_URL = process.env.API_BASE_URL || "https://flashcards-project-neon.vercel.app";
 const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000";
-console.log("API:",API_BASE_URL);
+console.log("API:", process.env.API_BASE_URL);
 
 /**
  * Defines the default headers for these functions to work with `json-server`
